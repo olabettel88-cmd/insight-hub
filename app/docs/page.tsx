@@ -1,12 +1,41 @@
 'use client';
 
+import Link from 'next/link';
+
 export default function DocsPage() {
   return (
     <div className="min-h-screen bg-black text-white">
       <div className="fixed inset-0 scanline-overlay z-0 opacity-20 pointer-events-none"></div>
 
+      {/* Header */}
+      <header className="border-b border-[rgba(236,19,19,0.2)] bg-black/90 backdrop-blur-xl sticky top-0 z-40">
+        <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+          <Link href="/" className="flex items-center gap-4 hover:opacity-80 transition-opacity select-none">
+            <div className="relative w-10 h-10 flex items-center justify-center border border-[rgba(236,19,19,0.4)]">
+              <span className="material-symbols-outlined text-[#ec1313] text-2xl">star_rate</span>
+              <div className="absolute -bottom-1 -right-1 w-2 h-2 bg-[#ec1313]"></div>
+            </div>
+            <h2 className="text-2xl font-black tracking-tighter uppercase" style={{ textShadow: '2px 0 #ec1313, -2px 0 #000' }}>
+              PKA291
+            </h2>
+          </Link>
+
+          <nav className="hidden md:flex items-center gap-8">
+            <Link href="/docs" className="text-[11px] font-bold text-[#ec1313] uppercase tracking-[0.3em]">
+              // DOCS
+            </Link>
+            <Link href="/terms" className="text-[11px] font-bold hover:text-[#ec1313] uppercase tracking-[0.3em] transition-colors">
+              // TERMS
+            </Link>
+            <Link href="/privacy" className="text-[11px] font-bold hover:text-[#ec1313] uppercase tracking-[0.3em] transition-colors">
+              // PRIVACY
+            </Link>
+          </nav>
+        </div>
+      </header>
+
       <div className="max-w-4xl mx-auto px-6 py-20 relative z-10">
-        {/* Header */}
+        {/* Page Header */}
         <div className="mb-16">
           <h1 className="text-5xl font-black uppercase tracking-tighter mb-4" style={{ textShadow: '2px 0 #ec1313, -2px 0 #000' }}>
             DOCUMENTATION

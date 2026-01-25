@@ -46,19 +46,8 @@ export async function POST(request: Request) {
     const passwordHash = await hashPassword(password);
     const telegramCode = generateTelegramCode();
 
-    // Check referral code if provided
-    let referrerId = null;
-    if (referralCode) {
-      const { data: referrer } = await supabase
-        .from('users')
-        .select('id')
-        .eq('referral_code', referralCode)
-        .single();
-      
-      if (referrer) {
-        referrerId = referrer.id;
-      }
-    }
+    // Generate unique referral code for this user
+    const userReferralCode = `ref_${Buffer.from(username + Date.now()).toString('base64').replace(/[^a-zA-Z0-9]/g, '').substring(0, 10)}`;
 
     // Create user
     const { data: newUser, error } = await supabase
@@ -68,12 +57,37 @@ export async function POST(request: Request) {
         password_hash: passwordHash,
         api_key: apiKey,
         telegram_code: telegramCode,
+        referral_code: userReferralCode,
         subscription_plan: 'free',
         daily_search_limit: 100,
-        referrer_id: referrerId,
       })
       .select()
       .single();
+
+    // Handle referral if provided
+    if (!error && referralCode && newUser) {
+      try {
+        const { data: referrer } = await supabase
+          .from('users')
+          .select('id')
+          .eq('referral_code', referralCode)
+          .single();
+        
+        if (referrer) {
+          await supabase
+            .from('referrals')
+            .insert({
+              referrer_id: referrer.id,
+              referred_user_id: newUser.id,
+              referral_code: referralCode,
+              discount_percentage: 25,
+              discount_active: true,
+            });
+        }
+      } catch (refError) {
+        console.log('[v0] Referral error (non-critical):', refError);
+      }
+    }
 
     if (error) {
       console.error('[v0] Registration error:', error);

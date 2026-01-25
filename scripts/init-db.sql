@@ -8,17 +8,18 @@ CREATE TABLE IF NOT EXISTS users (
   id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
   username VARCHAR(255) UNIQUE NOT NULL,
   password_hash VARCHAR(255) NOT NULL,
-  subscription_plan VARCHAR(50) DEFAULT 'free', -- free, monthly, quarterly, yearly, lifetime
+  subscription_plan VARCHAR(50) DEFAULT 'free',
   subscription_started_at TIMESTAMP,
   subscription_ends_at TIMESTAMP,
-  daily_search_limit INT DEFAULT 1,
+  daily_search_limit INT DEFAULT 100,
   daily_searches_used INT DEFAULT 0,
   last_search_reset TIMESTAMP DEFAULT NOW(),
-  api_key VARCHAR(255) UNIQUE DEFAULT gen_random_uuid()::text,
+  api_key VARCHAR(255) UNIQUE,
   telegram_code VARCHAR(10) UNIQUE,
   telegram_id VARCHAR(255),
   is_active BOOLEAN DEFAULT true,
   is_banned BOOLEAN DEFAULT false,
+  referral_code VARCHAR(20) UNIQUE,
   created_at TIMESTAMP DEFAULT NOW(),
   updated_at TIMESTAMP DEFAULT NOW()
 );
@@ -67,18 +68,15 @@ CREATE TABLE IF NOT EXISTS activity_logs (
   query_string TEXT,
   response_status INT,
   response_time_ms INT,
-  metadata JSON DEFAULT '{}',
-  created_at TIMESTAMP DEFAULT NOW(),
-  INDEX idx_user_id (user_id),
-  INDEX idx_created_at (created_at),
-  INDEX idx_ip_address (ip_address)
+  metadata JSONB DEFAULT '{}',
+  created_at TIMESTAMP DEFAULT NOW()
 );
 
 -- Search History table
 CREATE TABLE IF NOT EXISTS search_history (
   id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
   user_id UUID REFERENCES users(id) ON DELETE CASCADE,
-  query_type VARCHAR(100), -- email, breach, domain, etc.
+  query_type VARCHAR(100),
   query_value TEXT NOT NULL,
   api_used VARCHAR(255),
   results_count INT,
@@ -87,10 +85,7 @@ CREATE TABLE IF NOT EXISTS search_history (
   search_duration_ms INT,
   ip_address INET,
   user_agent TEXT,
-  created_at TIMESTAMP DEFAULT NOW(),
-  INDEX idx_user_id (user_id),
-  INDEX idx_created_at (created_at),
-  INDEX idx_query_value (query_value)
+  created_at TIMESTAMP DEFAULT NOW()
 );
 
 -- IP Address Detection & Behavior table
@@ -144,13 +139,11 @@ CREATE TABLE IF NOT EXISTS admin_audit_logs (
   admin_id UUID REFERENCES admins(id),
   action VARCHAR(255) NOT NULL,
   target_user_id UUID REFERENCES users(id) ON DELETE SET NULL,
-  target_type VARCHAR(100), -- user, api_config, settings, etc.
+  target_type VARCHAR(100),
   changes JSONB,
   reason TEXT,
   ip_address INET,
-  created_at TIMESTAMP DEFAULT NOW(),
-  INDEX idx_admin_id (admin_id),
-  INDEX idx_created_at (created_at)
+  created_at TIMESTAMP DEFAULT NOW()
 );
 
 -- Payment History table
@@ -168,16 +161,18 @@ CREATE TABLE IF NOT EXISTS payment_history (
 );
 
 -- Create indexes for performance
-CREATE INDEX idx_users_username ON users(username);
-CREATE INDEX idx_users_email ON users(email);
-CREATE INDEX idx_users_telegram_code ON users(telegram_code);
-CREATE INDEX idx_admins_user_id ON admins(user_id);
-CREATE INDEX idx_activity_logs_user_id ON activity_logs(user_id);
-CREATE INDEX idx_search_history_user_id ON search_history(user_id);
-CREATE INDEX idx_suspicious_activity_user_id ON suspicious_activity(user_id);
-CREATE INDEX idx_request_quota_user_id ON request_quota(user_id);
-CREATE INDEX idx_admin_audit_logs_admin_id ON admin_audit_logs(admin_id);
-CREATE INDEX idx_payment_history_user_id ON payment_history(user_id);
+CREATE INDEX IF NOT EXISTS idx_users_username ON users(username);
+CREATE INDEX IF NOT EXISTS idx_users_telegram_code ON users(telegram_code);
+CREATE INDEX IF NOT EXISTS idx_users_api_key ON users(api_key);
+CREATE INDEX IF NOT EXISTS idx_admins_user_id ON admins(user_id);
+CREATE INDEX IF NOT EXISTS idx_activity_logs_user_id ON activity_logs(user_id);
+CREATE INDEX IF NOT EXISTS idx_activity_logs_created_at ON activity_logs(created_at);
+CREATE INDEX IF NOT EXISTS idx_search_history_user_id ON search_history(user_id);
+CREATE INDEX IF NOT EXISTS idx_search_history_created_at ON search_history(created_at);
+CREATE INDEX IF NOT EXISTS idx_suspicious_activity_user_id ON suspicious_activity(user_id);
+CREATE INDEX IF NOT EXISTS idx_request_quota_user_id ON request_quota(user_id);
+CREATE INDEX IF NOT EXISTS idx_admin_audit_logs_admin_id ON admin_audit_logs(admin_id);
+CREATE INDEX IF NOT EXISTS idx_payment_history_user_id ON payment_history(user_id);
 
 -- Enable RLS (Row Level Security)
 ALTER TABLE users ENABLE ROW LEVEL SECURITY;
@@ -191,41 +186,16 @@ ALTER TABLE request_quota ENABLE ROW LEVEL SECURITY;
 ALTER TABLE admin_audit_logs ENABLE ROW LEVEL SECURITY;
 ALTER TABLE payment_history ENABLE ROW LEVEL SECURITY;
 
--- RLS Policies
--- Users can only see their own data
-CREATE POLICY "Users can view their own data" ON users
-  FOR SELECT USING (auth.uid()::text = id::text);
+-- Note: RLS policies can be added later when auth system is fully integrated
+-- For now, rely on API endpoint security checks
 
-CREATE POLICY "Users can update their own data" ON users
-  FOR UPDATE USING (auth.uid()::text = id::text);
+-- Insert default admin user (password: admin123456 - CHANGE THIS!)
+-- Hashed with SHA256 for demo purposes
+INSERT INTO users (username, password_hash, api_key, subscription_plan, is_active)
+VALUES ('admin_demo', 'e807f1fcf82d132f9bb018ca6738a19f27793c0e2b76a3a7ab016b922f3dc58f', 'pka_admin_demo_key_123456789', 'lifetime', true)
+ON CONFLICT (username) DO NOTHING;
 
--- Activity logs - users can see their own, admins see all
-CREATE POLICY "Users can view their own activity" ON activity_logs
-  FOR SELECT USING (
-    auth.uid()::text = user_id::text OR
-    EXISTS (SELECT 1 FROM admins WHERE user_id = auth.uid()::text)
-  );
-
--- Search history - users can see their own, admins see all
-CREATE POLICY "Users can view their own search history" ON search_history
-  FOR SELECT USING (
-    auth.uid()::text = user_id::text OR
-    EXISTS (SELECT 1 FROM admins WHERE user_id = auth.uid()::text)
-  );
-
--- Only admins can access admin tables
-CREATE POLICY "Only admins can access" ON admins
-  FOR SELECT USING (
-    EXISTS (SELECT 1 FROM admins WHERE user_id = auth.uid()::text)
-  );
-
-CREATE POLICY "Only admins can access api config" ON api_config
-  FOR ALL USING (
-    EXISTS (SELECT 1 FROM admins WHERE user_id = auth.uid()::text)
-  );
-
--- Insert default admin user (if needed)
--- Password should be hashed with bcrypt before inserting
-INSERT INTO users (username, email, password_hash, full_name, is_active)
-VALUES ('admin_default', 'admin@osint-platform.local', '', 'System Admin', true)
+-- Insert admin association
+INSERT INTO admins (user_id, is_admin, is_staff)
+SELECT id, true, true FROM users WHERE username = 'admin_demo'
 ON CONFLICT DO NOTHING;
