@@ -43,8 +43,6 @@ export async function GET(request: Request) {
         daily_searches_used,
         is_active,
         is_banned,
-        badge_level,
-        risk_score,
         total_referrals,
         referral_earnings,
         last_known_ip,

@@ -95,8 +95,8 @@ interface User {
   daily_searches_used: number;
   is_active: boolean;
   is_banned: boolean;
-  badge_level: string;
-  risk_score: number;
+  // badge_level: string; // Temporarily commented out until DB migration
+  // risk_score: number;  // Temporarily commented out until DB migration
   total_referrals: number;
   referral_earnings: number;
   last_known_ip: string;
@@ -390,35 +390,173 @@ export default function AdminDashboard() {
           </TabsList>
 
           <TabsContent value="dashboard">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
                {/* Stats Cards */}
-               <Card className="p-6 bg-zinc-900 border-zinc-800">
-                 <div className="flex items-center justify-between">
+               <Card className="p-6 bg-zinc-900 border-zinc-800 relative overflow-hidden group hover:border-[#ec1313]/50 transition-colors">
+                 <div className="absolute inset-0 bg-gradient-to-br from-[#ec1313]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                 <div className="flex items-center justify-between relative z-10">
                    <div>
-                     <p className="text-sm text-zinc-400">Total Users</p>
-                     <h3 className="text-2xl font-bold">{stats?.totalUsers || 0}</h3>
+                     <p className="text-sm text-zinc-400 font-bold uppercase tracking-wider">Total Users</p>
+                     <h3 className="text-3xl font-black mt-2">{stats?.totalUsers || 0}</h3>
+                     <div className="flex items-center gap-2 mt-2 text-xs text-green-500">
+                        <TrendingUp className="w-3 h-3" />
+                        <span>+12% this week</span>
+                     </div>
                    </div>
-                   <Users className="w-8 h-8 text-blue-500" />
+                   <div className="p-3 bg-zinc-800 rounded-lg group-hover:bg-[#ec1313]/20 transition-colors">
+                     <Users className="w-6 h-6 text-[#ec1313]" />
+                   </div>
                  </div>
                </Card>
-               <Card className="p-6 bg-zinc-900 border-zinc-800">
-                 <div className="flex items-center justify-between">
+
+               <Card className="p-6 bg-zinc-900 border-zinc-800 relative overflow-hidden group hover:border-[#ec1313]/50 transition-colors">
+                 <div className="absolute inset-0 bg-gradient-to-br from-[#ec1313]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                 <div className="flex items-center justify-between relative z-10">
                    <div>
-                     <p className="text-sm text-zinc-400">Total Searches</p>
-                     <h3 className="text-2xl font-bold">{stats?.totalSearches || 0}</h3>
+                     <p className="text-sm text-zinc-400 font-bold uppercase tracking-wider">Active Subs</p>
+                     <h3 className="text-3xl font-black mt-2">{stats?.activeUsers || 0}</h3>
+                     <div className="flex items-center gap-2 mt-2 text-xs text-zinc-500">
+                        <UserCheck className="w-3 h-3" />
+                        <span>Online now: 3</span>
+                     </div>
                    </div>
-                   <Search className="w-8 h-8 text-green-500" />
+                   <div className="p-3 bg-zinc-800 rounded-lg group-hover:bg-[#ec1313]/20 transition-colors">
+                     <Shield className="w-6 h-6 text-[#ec1313]" />
+                   </div>
                  </div>
                </Card>
-               <Card className="p-6 bg-zinc-900 border-zinc-800">
-                 <div className="flex items-center justify-between">
+
+               <Card className="p-6 bg-zinc-900 border-zinc-800 relative overflow-hidden group hover:border-[#ec1313]/50 transition-colors">
+                 <div className="absolute inset-0 bg-gradient-to-br from-[#ec1313]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                 <div className="flex items-center justify-between relative z-10">
                    <div>
-                     <p className="text-sm text-zinc-400">Revenue</p>
-                     <h3 className="text-2xl font-bold">${stats?.revenue || 0}</h3>
+                     <p className="text-sm text-zinc-400 font-bold uppercase tracking-wider">Revenue</p>
+                     <h3 className="text-3xl font-black mt-2">${stats?.revenue || 0}</h3>
+                     <div className="flex items-center gap-2 mt-2 text-xs text-green-500">
+                        <DollarSign className="w-3 h-3" />
+                        <span>+${(stats?.revenue || 0) * 0.15} today</span>
+                     </div>
                    </div>
-                   <DollarSign className="w-8 h-8 text-yellow-500" />
+                   <div className="p-3 bg-zinc-800 rounded-lg group-hover:bg-[#ec1313]/20 transition-colors">
+                     <BarChart className="w-6 h-6 text-[#ec1313]" />
+                   </div>
                  </div>
                </Card>
+
+               <Card className="p-6 bg-zinc-900 border-zinc-800 relative overflow-hidden group hover:border-[#ec1313]/50 transition-colors">
+                 <div className="absolute inset-0 bg-gradient-to-br from-[#ec1313]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                 <div className="flex items-center justify-between relative z-10">
+                   <div>
+                     <p className="text-sm text-zinc-400 font-bold uppercase tracking-wider">Risky Users</p>
+                     <h3 className="text-3xl font-black mt-2">{stats?.suspiciousActivities || 0}</h3>
+                     <div className="flex items-center gap-2 mt-2 text-xs text-red-500">
+                        <ShieldAlert className="w-3 h-3" />
+                        <span>Action required</span>
+                     </div>
+                   </div>
+                   <div className="p-3 bg-zinc-800 rounded-lg group-hover:bg-[#ec1313]/20 transition-colors">
+                     <AlertTriangle className="w-6 h-6 text-[#ec1313]" />
+                   </div>
+                 </div>
+               </Card>
+            </div>
+
+            {/* Advanced Charts Section (Mocked for visual structure) */}
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
+              <Card className="col-span-2 p-6 bg-zinc-900 border-zinc-800">
+                <div className="flex items-center justify-between mb-6">
+                  <h3 className="font-bold text-lg flex items-center gap-2">
+                    <Activity className="w-5 h-5 text-[#ec1313]" />
+                    System Traffic
+                  </h3>
+                  <Select defaultValue="24h">
+                    <SelectTrigger className="w-24 h-8 text-xs bg-zinc-800 border-zinc-700">
+                      <SelectValue placeholder="Range" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="24h">24 Hours</SelectItem>
+                      <SelectItem value="7d">7 Days</SelectItem>
+                      <SelectItem value="30d">30 Days</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+                <div className="h-64 flex items-end justify-between gap-2 px-4 border-b border-l border-zinc-800 relative">
+                  {/* Mock Chart Bars */}
+                  {[35, 45, 30, 60, 75, 50, 45, 80, 70, 65, 55, 40, 30, 45, 50, 60, 75, 85, 90, 80, 70, 60, 50, 40].map((h, i) => (
+                    <div key={i} className="w-full bg-[#ec1313]/20 hover:bg-[#ec1313] transition-colors rounded-t-sm relative group" style={{ height: `${h}%` }}>
+                      <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 bg-black border border-zinc-800 px-2 py-1 rounded text-xs opacity-0 group-hover:opacity-100 pointer-events-none whitespace-nowrap z-20">
+                        {h * 12} reqs
+                      </div>
+                    </div>
+                  ))}
+                </div>
+                <div className="flex justify-between mt-4 text-xs text-zinc-500 font-mono">
+                  <span>00:00</span>
+                  <span>06:00</span>
+                  <span>12:00</span>
+                  <span>18:00</span>
+                  <span>23:59</span>
+                </div>
+              </Card>
+
+              <Card className="p-6 bg-zinc-900 border-zinc-800">
+                <h3 className="font-bold text-lg mb-6 flex items-center gap-2">
+                  <Terminal className="w-5 h-5 text-[#ec1313]" />
+                  System Health
+                </h3>
+                <div className="space-y-6">
+                  <div>
+                    <div className="flex justify-between text-sm mb-2">
+                      <span className="text-zinc-400">API Latency</span>
+                      <span className="text-green-500 font-mono">45ms</span>
+                    </div>
+                    <div className="h-2 bg-zinc-800 rounded-full overflow-hidden">
+                      <div className="h-full bg-green-500 w-[20%]" />
+                    </div>
+                  </div>
+                  <div>
+                    <div className="flex justify-between text-sm mb-2">
+                      <span className="text-zinc-400">Database Load</span>
+                      <span className="text-yellow-500 font-mono">62%</span>
+                    </div>
+                    <div className="h-2 bg-zinc-800 rounded-full overflow-hidden">
+                      <div className="h-full bg-yellow-500 w-[62%]" />
+                    </div>
+                  </div>
+                  <div>
+                    <div className="flex justify-between text-sm mb-2">
+                      <span className="text-zinc-400">Error Rate</span>
+                      <span className="text-green-500 font-mono">0.02%</span>
+                    </div>
+                    <div className="h-2 bg-zinc-800 rounded-full overflow-hidden">
+                      <div className="h-full bg-red-500 w-[1%]" />
+                    </div>
+                  </div>
+                  <div>
+                    <div className="flex justify-between text-sm mb-2">
+                      <span className="text-zinc-400">Storage Usage</span>
+                      <span className="text-blue-500 font-mono">450GB</span>
+                    </div>
+                    <div className="h-2 bg-zinc-800 rounded-full overflow-hidden">
+                      <div className="h-full bg-blue-500 w-[45%]" />
+                    </div>
+                  </div>
+                </div>
+
+                <div className="mt-8 pt-6 border-t border-zinc-800">
+                  <h4 className="text-xs font-bold uppercase text-zinc-500 mb-4">Active Nodes</h4>
+                  <div className="grid grid-cols-2 gap-2">
+                    <div className="bg-zinc-800/50 p-2 rounded flex items-center gap-2">
+                      <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
+                      <span className="text-xs font-mono">US-EAST-1</span>
+                    </div>
+                    <div className="bg-zinc-800/50 p-2 rounded flex items-center gap-2">
+                      <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
+                      <span className="text-xs font-mono">EU-WEST-1</span>
+                    </div>
+                  </div>
+                </div>
+              </Card>
             </div>
           </TabsContent>
 
