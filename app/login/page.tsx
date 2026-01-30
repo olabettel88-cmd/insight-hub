@@ -16,14 +16,6 @@ export default function LoginPage() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
-  // Check for existing session
-  React.useEffect(() => {
-    const token = localStorage.getItem('authToken');
-    if (token) {
-      router.push('/dashboard');
-    }
-  }, [router]);
-
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     setError('');

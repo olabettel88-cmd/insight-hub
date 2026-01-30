@@ -19,13 +19,6 @@ export default function RegisterPage() {
   const [loading, setLoading] = useState(false);
   const [copied, setCopied] = useState(false);
 
-  useEffect(() => {
-    const token = localStorage.getItem('authToken');
-    if (token) {
-      router.push('/dashboard');
-    }
-  }, [router]);
-
   const handleRegister = async (e: React.FormEvent) => {
     e.preventDefault();
     setError('');

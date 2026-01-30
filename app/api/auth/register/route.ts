@@ -1,5 +1,6 @@
 import { supabase, hashPassword, generateTelegramCode, logActivity, createSession } from '@/lib/auth';
 import { generateAccessToken, generateRefreshToken } from '@/lib/jwt';
+import { setSessionCookie, setRefreshTokenCookie } from '@/lib/cookies';
 import { headers } from 'next/headers';
 
 export async function POST(request: Request) {
