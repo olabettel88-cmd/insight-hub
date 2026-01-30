@@ -1,0 +1,64 @@
+## Error Type
+Recoverable Error
+
+## Error Message
+Hydration failed because the server rendered HTML didn't match the client. As a result this tree will be regenerated on the client. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+https://react.dev/link/hydration-mismatch
+
+  ...
+    <HotReload globalError={[...]} webSocket={WebSocket} staticIndicatorState={{pathname:null, ...}}>
+      <AppDevOverlayErrorBoundary globalError={[...]}>
+        <ReplaySsrOnlyErrors>
+        <DevRootHTTPAccessFallbackBoundary>
+          <HTTPAccessFallbackBoundary notFound={<NotAllowedRootHTTPFallbackError>}>
+            <HTTPAccessFallbackErrorBoundary pathname="/" notFound={<NotAllowedRootHTTPFallbackError>} ...>
+              <RedirectBoundary>
+                <RedirectErrorBoundary router={{...}}>
+                  <Head>
+                  <__next_root_layout_boundary__>
+                    <SegmentViewNode type="layout" pagePath="layout.tsx">
+                      <SegmentTrieNode>
+                      <link>
+                      <script>
+                      <script>
+                      <RootLayout>
+                        <html lang="en">
+                          <head>
++                           <link
++                             rel="stylesheet"
++                             href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,..."
++                           >
+-                           <script
+-                             src="/__replco/static/devtools/injected.js"
+-                             onerror={"parent.postMessage({event:'error',payload:'script.onerror: Failed to load '+e..."}
+-                           >
+                          ...
+                  ...
+
+
+
+    at _ (chrome-extension://egjidjbpglichdcondbcbdnbeeppgdph/inpage.js:166:26614)
+    at w (chrome-extension://egjidjbpglichdcondbcbdnbeeppgdph/inpage.js:166:26798)
+    at Y (chrome-extension://egjidjbpglichdcondbcbdnbeeppgdph/inpage.js:166:27157)
+    at link (<anonymous>:null:null)
+    at RootLayout (app/layout.tsx:47:9)
+
+## Code Frame
+  45 |     <html lang="en">
+  46 |       <head>
+> 47 |         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+     |         ^
+  48 |       </head>
+  49 |       <body className={`font-sans antialiased`}>
+  50 |         {children}
+
+Next.js version: 16.0.10 (Turbopack)
