@@ -207,14 +207,14 @@ export default function RegisterPage() {
             <div className="bg-black/40 border-2 border-[rgba(236,19,19,0.5)] p-4 rounded space-y-3">
               <p className="text-[10px] font-bold uppercase tracking-widest text-[#ec1313]">API_KEY_GENERATED</p>
               <div className="flex items-center gap-2">
-                <code className="flex-1 bg-black/50 p-2 rounded text-[#ec1313] font-mono text-xs break-all border border-[#ec1313]/20">
+                <code className="flex-1 bg-black/50 p-3 rounded text-[#ec1313] font-mono text-sm tracking-wide break-all border border-[#ec1313]/20 shadow-[0_0_10px_rgba(236,19,19,0.2)]">
                   {apiKey}
                 </code>
                 <button 
                   onClick={copyToClipboard}
-                  className="p-2 hover:bg-[#ec1313]/20 rounded transition-colors"
+                  className="p-3 hover:bg-[#ec1313]/20 rounded transition-colors border border-transparent hover:border-[#ec1313]/30"
                 >
-                  <span className="material-symbols-outlined text-sm text-[#ec1313]">{copied ? 'check_circle' : 'content_copy'}</span>
+                  <span className="material-symbols-outlined text-lg text-[#ec1313]">{copied ? 'check_circle' : 'content_copy'}</span>
                 </button>
               </div>
               <p className="text-[9px] text-slate-500 uppercase tracking-tighter">

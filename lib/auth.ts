@@ -24,7 +24,14 @@ export function generateTelegramCode(): string {
 }
 
 export function generateApiKey(): string {
-  return `pka_${Math.random().toString(36).substring(2, 20)}${Math.random().toString(36).substring(2, 20)}`;
+  // Using crypto.getRandomValues for better entropy
+  const array = new Uint8Array(24);
+  crypto.getRandomValues(array);
+  const randomString = Array.from(array)
+    .map(b => b.toString(16).padStart(2, '0'))
+    .join('');
+  
+  return `pka291_${randomString}`;
 }
 
 // Create session

@@ -47,7 +47,15 @@ export async function POST(request: Request) {
     }
 
     // Generate API key
-    const apiKey = `pka_${Buffer.from(username + Date.now() + Math.random()).toString('base64').replace(/[^a-zA-Z0-9]/g, '').substring(0, 32)}`;
+    // Using crypto.getRandomValues for better entropy
+    const array = new Uint8Array(24);
+    crypto.getRandomValues(array);
+    const randomString = Array.from(array)
+      .map(b => b.toString(16).padStart(2, '0'))
+      .join('');
+    
+    // Format: pka291_ + 48 hex chars (high entropy)
+    const apiKey = `pka291_${randomString}`;
     
     // Hash password
     const passwordHash = await hashPassword(password);
