@@ -1,5 +1,6 @@
 import { supabase, verifyPassword, logActivity, createSession, hashPassword } from '@/lib/auth';
 import { generateAccessToken, generateRefreshToken } from '@/lib/jwt';
+import { setSessionCookie, setRefreshTokenCookie } from '@/lib/cookies'; // ADD THIS LINE
 import { headers } from 'next/headers';
 
 // Rate limiting
