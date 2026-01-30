@@ -92,21 +92,27 @@ export async function POST(request: Request) {
     // Handle referral code if provided
     if (referralCode) {
       try {
-        const { data: referral } = await supabase
-          .from('referrals')
-          .select('referrer_id, id, used_count')
+        // Find the referrer
+        const { data: referrer } = await supabase
+          .from('users')
+          .select('id, total_referrals')
           .eq('referral_code', referralCode)
-          .eq('discount_active', true)
           .maybeSingle();
         
-        if (referral) {
+        if (referrer) {
+          // Update the new user with referred_by
           await supabase
-            .from('referrals')
+            .from('users')
+            .update({ referred_by: referrer.id })
+            .eq('id', newUser.id);
+
+          // Update referrer stats
+          await supabase
+            .from('users')
             .update({ 
-              referred_user_id: newUser.id,
-              used_count: (referral.used_count || 0) + 1
+              total_referrals: (referrer.total_referrals || 0) + 1 
             })
-            .eq('id', referral.id);
+            .eq('id', referrer.id);
         }
       } catch (refError) {
         console.error('[v0] Referral error (non-blocking):', refError);
