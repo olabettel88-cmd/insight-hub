@@ -50,6 +50,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
+        <meta name="heleket" content="f358cc38" />
         <Suspense fallback={null}>
           <MaterialSymbols />
         </Suspense>
