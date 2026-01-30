@@ -100,7 +100,7 @@ export default function RegisterPage() {
       <div className="relative z-10 w-full max-w-md lg:max-w-sm">
         {/* Header with Logo */}
         <div className="text-center mb-8">
-          <div className="flex items-center justify-center gap-2 mb-4">
+          <Link href="/" className="inline-flex items-center justify-center gap-2 mb-4 hover:opacity-80 transition-opacity">
             <div className="w-8 h-8 flex items-center justify-center border border-[#ec1313] relative">
               <span className="material-symbols-outlined text-[#ec1313] text-xl">star_rate</span>
               <div className="absolute -bottom-1 -right-1 w-1.5 h-1.5 bg-[#ec1313]"></div>
@@ -108,7 +108,7 @@ export default function RegisterPage() {
             <h1 className="text-2xl font-black tracking-tighter uppercase text-[#ec1313]" style={{ textShadow: '2px 0 #ec1313, -2px 0 #000' }}>
               PKA291
             </h1>
-          </div>
+          </Link>
           <p className="text-xs font-bold uppercase tracking-widest text-slate-500">INITIALIZE_ACCESS</p>
         </div>
 

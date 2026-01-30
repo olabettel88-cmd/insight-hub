@@ -146,6 +146,10 @@ export async function POST(request: Request) {
     const accessToken = await generateAccessToken(user.id, user.username, sessionId);
     const newRefreshToken = await generateRefreshToken(user.id, user.username, sessionId);
 
+    // Set server-side cookies
+    await setSessionCookie(sessionId, accessToken);
+    await setRefreshTokenCookie(newRefreshToken);
+
     // Log success
     await logActivity(user.id, 'LOGIN_SUCCESS', { ip, userAgent });
 

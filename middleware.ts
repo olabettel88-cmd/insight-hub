@@ -3,7 +3,7 @@ import type { NextRequest } from 'next/server';
 import { verifyToken } from './lib/jwt';
 
 // Paths that require authentication
-const PROTECTED_PATHS = ['/dashboard', '/docs'];
+const PROTECTED_PATHS = ['/dashboard'];
 
 // Paths that are only for non-authenticated users
 const AUTH_PATHS = ['/login', '/register'];
