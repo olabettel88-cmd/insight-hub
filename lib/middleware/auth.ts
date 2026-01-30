@@ -7,13 +7,30 @@ export async function authenticateRequest(request: NextRequest): Promise<{
   user?: JWTPayload;
   error?: string;
 }> {
-  const authHeader = request.headers.get('authorization');
+  let token: string | undefined;
 
-  if (!authHeader) {
-    return { authenticated: false, error: 'No authorization header' };
+  // 1. Try Authorization header
+  const authHeader = request.headers.get('authorization');
+  if (authHeader) {
+    token = authHeader.replace('Bearer ', '');
   }
 
-  const token = authHeader.replace('Bearer ', '');
+  // 2. If no header, try cookie
+  if (!token) {
+    const sessionCookie = request.cookies.get('pka_session');
+    if (sessionCookie?.value) {
+      try {
+        const parsed = JSON.parse(sessionCookie.value);
+        token = parsed.accessToken;
+      } catch (e) {
+        // Invalid cookie format
+      }
+    }
+  }
+
+  if (!token) {
+    return { authenticated: false, error: 'No authorization header or valid session cookie' };
+  }
 
   // Verify JWT
   const payload = await verifyToken(token);
