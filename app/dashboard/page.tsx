@@ -144,38 +144,44 @@ export default function DashboardPage() {
   const [paymentData, setPaymentData] = useState<any>(null);
 
   useEffect(() => {
-    const token = localStorage.getItem('authToken');
-    const userId = localStorage.getItem('userId');
-
-    if (!token || !userId) {
-      router.push('/login');
-      return;
-    }
-
     fetchUserStats();
-  }, [router]);
+  }, []);
 
   const fetchUserStats = async () => {
     try {
-      const userId = localStorage.getItem('userId');
-      const response = await fetch(`/api/users/${userId}`, {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem('authToken')}`,
-        },
+      const token = localStorage.getItem('authToken');
+      const headers: Record<string, string> = {};
+      if (token) {
+        headers['Authorization'] = `Bearer ${token}`;
+      }
+
+      const response = await fetch('/api/auth/me', {
+        headers,
       });
 
       if (!response.ok) {
         if (response.status === 401) {
+          localStorage.removeItem('authToken');
+          localStorage.removeItem('userId');
           router.push('/login');
+        } else {
+          toast.error('Failed to load user profile');
         }
         return;
       }
 
       const data = await response.json();
+      
+      // Ensure userId is in localStorage for other components/logic
+      if (data.id) {
+        localStorage.setItem('userId', data.id);
+      }
+
       setUser(data);
       setNoResultsToday(data.searchesUsed >= data.searchesLimit);
     } catch (error) {
       console.error('[v0] Error fetching user stats:', error);
+      toast.error('Failed to connect to server');
     }
   };
 
@@ -195,12 +201,17 @@ export default function DashboardPage() {
     setLoading(true);
 
     try {
+      const token = localStorage.getItem('authToken');
+      const headers: Record<string, string> = {
+        'Content-Type': 'application/json',
+      };
+      if (token) {
+        headers['Authorization'] = `Bearer ${token}`;
+      }
+
       const response = await fetch('/api/search', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${localStorage.getItem('authToken')}`,
-        },
+        headers,
         body: JSON.stringify({
           query,
           type: searchType,
@@ -227,7 +238,22 @@ export default function DashboardPage() {
     }
   };
 
-  const handleLogout = () => {
+  const handleLogout = async () => {
+    try {
+      const token = localStorage.getItem('authToken');
+      const headers: Record<string, string> = {};
+      if (token) {
+        headers['Authorization'] = `Bearer ${token}`;
+      }
+      
+      await fetch('/api/auth/logout', { 
+        method: 'POST',
+        headers 
+      });
+    } catch (e) {
+      console.error('Logout failed', e);
+    }
+    
     localStorage.removeItem('authToken');
     localStorage.removeItem('userId');
     router.push('/login');
@@ -248,12 +274,17 @@ export default function DashboardPage() {
     if (!selectedPlan) return;
     setPaymentLoading(true);
     try {
+      const token = localStorage.getItem('authToken');
+      const headers: Record<string, string> = {
+        'Content-Type': 'application/json',
+      };
+      if (token) {
+        headers['Authorization'] = `Bearer ${token}`;
+      }
+
       const response = await fetch('/api/payment/create', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${localStorage.getItem('authToken')}`,
-        },
+        headers,
         body: JSON.stringify({
           planId: selectedPlan.id,
           cryptoCurrency,

@@ -13,19 +13,14 @@ export async function POST(request: Request) {
     // Clear cookies regardless of auth header validity to ensure cleanup
     await clearSessionCookies();
 
-    if (!authHeader) {
-      return Response.json(
-        { error: 'Unauthorized' },
-        { status: 401 }
-      );
-    }
+    if (authHeader) {
+      const token = authHeader.replace('Bearer ', '');
+      const payload = await verifyToken(token);
 
-    const token = authHeader.replace('Bearer ', '');
-    const payload = await verifyToken(token);
-
-    if (payload) {
-      await invalidateSession(payload.sessionId);
-      await logActivity(payload.userId, 'LOGOUT', { ip, userAgent });
+      if (payload) {
+        await invalidateSession(payload.sessionId);
+        await logActivity(payload.userId, 'LOGOUT', { ip, userAgent });
+      }
     }
 
     return Response.json({ success: true });

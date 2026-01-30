@@ -1,7 +1,7 @@
 import { supabase } from '@/lib/auth';
 import { createInvoice, getAvailableCurrencies } from '@/lib/heleket';
 import { headers } from 'next/headers';
-import { verifyToken } from '@/lib/jwt';
+import { authenticateRequest } from '@/lib/middleware/auth';
 
 const PLAN_PRICES: Record<string, { amount: number; currency: string; searches: number; duration: number }> = {
   monthly: { amount: 50, currency: 'USD', searches: 100, duration: 30 },
@@ -12,19 +12,14 @@ const PLAN_PRICES: Record<string, { amount: number; currency: string; searches: 
 
 export async function POST(request: Request) {
   try {
-    const headersList = await headers();
-    const authHeader = headersList.get('authorization');
+    const auth = await authenticateRequest(request as any);
 
-    if (!authHeader) {
+    if (!auth.authenticated || !auth.user) {
       return Response.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
-    const token = authHeader.replace('Bearer ', '');
-    const payload = await verifyToken(token);
-
-    if (!payload || !payload.userId) {
-      return Response.json({ error: 'Invalid token' }, { status: 401 });
-    }
+    const payload = auth.user;
+    const userId = payload.userId;
 
     const body = await request.json();
     const { planId, cryptoCurrency } = body;
@@ -34,7 +29,7 @@ export async function POST(request: Request) {
     }
 
     const plan = PLAN_PRICES[planId];
-    const orderId = `pka_${payload.userId}_${planId}_${Date.now()}`;
+    const orderId = `pka_${userId}_${planId}_${Date.now()}`;
 
     const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://your-domain.com';
 
@@ -47,11 +42,11 @@ export async function POST(request: Request) {
       urlSuccess: `${baseUrl}/dashboard?payment=success`,
       urlReturn: `${baseUrl}/pricing`,
       lifetime: 3600,
-      additionalData: JSON.stringify({ userId: payload.userId, planId }),
+      additionalData: JSON.stringify({ userId, planId }),
     });
 
     await supabase.from('payment_history').insert({
-      user_id: payload.userId,
+      user_id: userId,
       order_id: orderId,
       payment_provider: 'heleket',
       amount: plan.amount,

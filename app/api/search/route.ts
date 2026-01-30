@@ -1,5 +1,6 @@
 import { supabase, checkDailyLimit, logActivity } from '@/lib/auth';
 import { headers } from 'next/headers';
+import { authenticateRequest } from '@/lib/middleware/auth';
 
 // This would integrate with breach.rip or other configured API
 async function performSearch(query: string, type: string, apiConfig: string) {
@@ -38,31 +39,21 @@ async function performSearch(query: string, type: string, apiConfig: string) {
 export async function POST(request: Request) {
   try {
     const headersList = await headers();
-    const authHeader = headersList.get('authorization');
     const forwardedFor = headersList.get('x-forwarded-for') || '';
     const ip = forwardedFor.split(',')[0].trim() || headersList.get('x-real-ip') || 'unknown';
     const userAgent = headersList.get('user-agent') || '';
 
-    if (!authHeader) {
+    // Use centralized authentication
+    const auth = await authenticateRequest(request as any);
+    
+    if (!auth.authenticated || !auth.user) {
       return Response.json(
-        { message: 'Unauthorized' },
+        { message: auth.error || 'Unauthorized' },
         { status: 401 }
       );
     }
-
-    // Extract user ID from token (in production, use JWT verification)
-    const token = authHeader.replace('Bearer ', '');
-    let userId: string;
-
-    try {
-      const decoded = JSON.parse(Buffer.from(token, 'base64').toString());
-      userId = decoded.userId;
-    } catch {
-      return Response.json(
-        { message: 'Invalid token' },
-        { status: 401 }
-      );
-    }
+    
+    const userId = auth.user.userId;
 
     const body = await request.json();
     const { query, type } = body;
