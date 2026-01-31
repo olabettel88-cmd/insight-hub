@@ -4,7 +4,7 @@ const JWT_SECRET = new TextEncoder().encode(
   process.env.JWT_SECRET || 'your-super-secret-jwt-key-change-this-in-production'
 );
 
-const JWT_EXPIRY = '7d'; // 7 days
+const JWT_EXPIRY = '1h'; // 1 hour
 const REFRESH_TOKEN_EXPIRY = '30d'; // 30 days
 
 export interface JWTPayload {

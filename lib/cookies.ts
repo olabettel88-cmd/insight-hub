@@ -21,7 +21,7 @@ const SESSION_COOKIE_NAME = 'pka_session';
 const REFRESH_TOKEN_COOKIE_NAME = 'pka_refresh';
 const FINGERPRINT_COOKIE_NAME = 'pka_fp';
 
-const SESSION_MAX_AGE = 15 * 60;
+const SESSION_MAX_AGE = 60 * 60; // 1 hour
 const REFRESH_MAX_AGE = 30 * 24 * 60 * 60;
 const FINGERPRINT_MAX_AGE = 365 * 24 * 60 * 60;
 

@@ -15,17 +15,28 @@ export default function RegisterPage() {
   const [confirmPassword, setConfirmPassword] = useState('');
   const [apiKey, setApiKey] = useState('');
   const [referralCode, setReferralCode] = useState('');
+  const [captchaInput, setCaptchaInput] = useState('');
+  const [captchaUrl, setCaptchaUrl] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   const [copied, setCopied] = useState(false);
+
+  useEffect(() => {
+    refreshCaptcha();
+  }, []);
+
+  const refreshCaptcha = () => {
+    setCaptchaUrl(`/api/auth/captcha?t=${Date.now()}`);
+    setCaptchaInput('');
+  };
 
   const handleRegister = async (e: React.FormEvent) => {
     e.preventDefault();
     setError('');
     setLoading(true);
 
-    if (!username || !password || !confirmPassword) {
-      setError('All fields are required');
+    if (!username || !password || !confirmPassword || !captchaInput) {
+      setError('All fields including captcha are required');
       setLoading(false);
       return;
     }
@@ -46,7 +57,12 @@ export default function RegisterPage() {
       const response = await fetch('/api/auth/register', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ username, password, referralCode: referralCode || null }),
+        body: JSON.stringify({ 
+          username, 
+          password, 
+          referralCode: referralCode || null,
+          captcha: captchaInput
+        }),
       });
 
       const data = await response.json();
@@ -267,7 +283,7 @@ export default function RegisterPage() {
         )}
 
         <div className="text-center mt-6 text-[9px] font-mono text-slate-600 uppercase tracking-widest">
-          ENCRYPTED: AES-256-GCM
+          PKA291 2026
         </div>
       </div>
     </div>

@@ -320,7 +320,7 @@ export default function DashboardPage() {
       {/* Sidebar-like Navigation */}
       <div className="fixed left-0 top-0 h-screen w-64 bg-sidebar border-r border-border p-6 hidden lg:flex flex-col">
         <div className="mb-12">
-          <h1 className="text-xl font-bold text-primary">OSINT Platform</h1>
+          <h1 className="text-xl font-bold text-primary">PKA291</h1>
           <p className="text-xs text-muted-foreground mt-1">Intelligence Dashboard</p>
         </div>
 

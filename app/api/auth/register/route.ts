@@ -1,22 +1,32 @@
 import { supabase, hashPassword, generateTelegramCode, logActivity, createSession } from '@/lib/auth';
 import { generateAccessToken, generateRefreshToken } from '@/lib/jwt';
 import { setSessionCookie, setRefreshTokenCookie } from '@/lib/cookies';
-import { headers } from 'next/headers';
+import { headers, cookies } from 'next/headers';
 
 export async function POST(request: Request) {
   try {
     const headersList = await headers();
+    const cookieStore = await cookies();
     const forwardedFor = headersList.get('x-forwarded-for') || '';
     const ip = forwardedFor.split(',')[0].trim() || headersList.get('x-real-ip') || 'unknown';
     const userAgent = headersList.get('user-agent') || '';
     
     const body = await request.json();
-    const { username, password, referralCode } = body;
+    const { username, password, referralCode, captcha } = body;
 
     // Validation
     if (!username || !password) {
       return Response.json(
         { error: 'Username and password are required' },
+        { status: 400 }
+      );
+    }
+
+    // Captcha Validation
+    const savedCaptcha = cookieStore.get('pka_captcha');
+    if (!captcha || !savedCaptcha || captcha.toUpperCase() !== savedCaptcha.value) {
+      return Response.json(
+        { error: 'Invalid security code' },
         { status: 400 }
       );
     }
