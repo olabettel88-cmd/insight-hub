@@ -164,6 +164,7 @@ export default function AdminDashboard() {
   // Stats Modal State
   const [selectedUserStats, setSelectedUserStats] = useState<User | null>(null);
   const [userActivityLogs, setUserActivityLogs] = useState<ActivityLog[]>([]);
+  const [globalActivityLogs, setGlobalActivityLogs] = useState<ActivityLog[]>([]);
   const [statsModalOpen, setStatsModalOpen] = useState(false);
 
   // Add Days Modal State
