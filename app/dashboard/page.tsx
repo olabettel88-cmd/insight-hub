@@ -6,7 +6,7 @@ import {
   Search, LogOut, Zap, TrendingUp, Crown, CreditCard, 
   Terminal, Shield, Globe, Database, Eye, EyeOff, 
   Server, Smartphone, User, Wifi, MapPin, Gamepad2, 
-  Ghost, FileText, Lock, AlertTriangle, Hash, Mail
+  Ghost, FileText, Lock, AlertTriangle, Hash, Mail, Settings
 } from 'lucide-react';
 import { toast } from 'sonner';
 import { Button } from '@/components/ui/button';
@@ -72,7 +72,6 @@ const categories = [
     name: 'Main',
     items: [
       { id: 'home', label: 'Dashboard', icon: <Terminal className="w-4 h-4" /> },
-      { id: 'settings', label: 'Settings', icon: <Shield className="w-4 h-4" /> },
     ]
   },
   {
@@ -121,9 +120,11 @@ const categories = [
 const FireAvatar = () => (
   <div className="relative w-10 h-10 flex items-center justify-center bg-black border border-[#ec1313] overflow-hidden group">
     <div className="absolute inset-0 bg-red-600/20 blur-md animate-pulse"></div>
-    <div className="absolute -bottom-4 left-0 w-full h-8 bg-gradient-to-t from-[#ec1313] to-transparent opacity-60 blur-sm"></div>
+    {/* Side Fire Effects */}
+    <div className="absolute -left-1 top-0 h-full w-3 bg-[#ec1313] blur-md animate-pulse delay-75 opacity-60"></div>
+    <div className="absolute -right-1 top-0 h-full w-3 bg-[#ec1313] blur-md animate-pulse delay-150 opacity-60"></div>
     <span className="relative z-10 font-black text-[#ec1313] text-xl font-mono group-hover:scale-110 transition-transform" style={{ textShadow: '0 0 10px #ec1313' }}>
-      F
+      P
     </span>
   </div>
 );
@@ -170,6 +171,11 @@ export default function DashboardPage() {
   const [activeTab, setActiveTab] = useState('home');
   const [loading, setLoading] = useState(true);
   const [showApiKey, setShowApiKey] = useState(false);
+  
+  // Password Change State
+  const [newPassword, setNewPassword] = useState('');
+  const [confirmNewPassword, setConfirmNewPassword] = useState('');
+  const [passwordLoading, setPasswordLoading] = useState(false);
 
   useEffect(() => {
     fetchUserStats();
@@ -207,6 +213,45 @@ export default function DashboardPage() {
     } catch (e) { console.error(e); }
     localStorage.clear();
     router.push('/login');
+  };
+
+  const handleUpdatePassword = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (newPassword !== confirmNewPassword) {
+      toast.error('Passwords do not match');
+      return;
+    }
+    if (newPassword.length < 6) {
+      toast.error('Password must be at least 6 characters');
+      return;
+    }
+
+    setPasswordLoading(true);
+    try {
+      const token = localStorage.getItem('authToken');
+      const response = await fetch('/api/auth/update-password', {
+        method: 'POST',
+        headers: { 
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}` 
+        },
+        body: JSON.stringify({ password: newPassword })
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || 'Failed to update password');
+      }
+
+      toast.success('Password updated successfully');
+      setNewPassword('');
+      setConfirmNewPassword('');
+    } catch (error: any) {
+      toast.error(error.message);
+    } finally {
+      setPasswordLoading(false);
+    }
   };
 
   const copyToClipboard = (text: string) => {
@@ -338,7 +383,84 @@ export default function DashboardPage() {
             </p>
           </div>
 
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+             {/* Profile Info */}
+             <Card className="bg-black/40 border border-[#ec1313]/30 p-8 backdrop-blur-sm h-full">
+                <h2 className="text-xl font-black uppercase tracking-tight text-white mb-6 flex items-center gap-2">
+                  <User className="w-5 h-5 text-[#ec1313]" /> Profile Identity
+                </h2>
+                
+                <div className="space-y-6">
+                   <div>
+                     <label className="text-xs font-bold uppercase tracking-widest text-slate-400 block mb-2">
+                       Username (Read Only)
+                     </label>
+                     <Input 
+                        value={user.username} 
+                        readOnly 
+                        className="bg-black/50 border-[#ec1313]/20 text-white font-mono uppercase tracking-widest"
+                     />
+                   </div>
+
+                   <div>
+                     <label className="text-xs font-bold uppercase tracking-widest text-slate-400 block mb-2">
+                       Security Clearance
+                     </label>
+                     <div className="flex items-center gap-2 text-[#ec1313] font-bold uppercase tracking-widest border border-[#ec1313]/20 bg-[#ec1313]/5 p-3 rounded">
+                        <Shield className="w-4 h-4" />
+                        Level 1 Operator
+                     </div>
+                   </div>
+                </div>
+             </Card>
+
+             {/* Change Password */}
+             <Card className="bg-black/40 border border-[#ec1313]/30 p-8 backdrop-blur-sm h-full">
+                <h2 className="text-xl font-black uppercase tracking-tight text-white mb-6 flex items-center gap-2">
+                  <Lock className="w-5 h-5 text-[#ec1313]" /> Update Credentials
+                </h2>
+                
+                <form onSubmit={handleUpdatePassword} className="space-y-4">
+                   <div>
+                     <label className="text-xs font-bold uppercase tracking-widest text-slate-400 block mb-2">
+                       New Password
+                     </label>
+                     <Input 
+                        type="password"
+                        value={newPassword}
+                        onChange={(e) => setNewPassword(e.target.value)}
+                        className="bg-black/50 border-[#ec1313]/20 text-white focus:border-[#ec1313]"
+                        placeholder="Enter new password"
+                     />
+                   </div>
+                   <div>
+                     <label className="text-xs font-bold uppercase tracking-widest text-slate-400 block mb-2">
+                       Confirm Password
+                     </label>
+                     <Input 
+                        type="password"
+                        value={confirmNewPassword}
+                        onChange={(e) => setConfirmNewPassword(e.target.value)}
+                        className="bg-black/50 border-[#ec1313]/20 text-white focus:border-[#ec1313]"
+                        placeholder="Confirm new password"
+                     />
+                   </div>
+                   <Button 
+                     type="submit" 
+                     disabled={passwordLoading}
+                     className="w-full bg-[#ec1313] hover:bg-[#c41111] text-white font-bold uppercase tracking-widest"
+                   >
+                     {passwordLoading ? 'Updating...' : 'Update_Password'}
+                   </Button>
+                </form>
+             </Card>
+          </div>
+
+          {/* API Key Section */}
           <Card className="bg-black/40 border border-[#ec1313]/30 p-8 backdrop-blur-sm">
+             <h2 className="text-xl font-black uppercase tracking-tight text-white mb-6 flex items-center gap-2">
+               <Terminal className="w-5 h-5 text-[#ec1313]" /> API Access
+             </h2>
              <div className="space-y-6">
                <div>
                  <label className="text-xs font-bold uppercase tracking-widest text-slate-400 block mb-3">
@@ -398,7 +520,7 @@ export default function DashboardPage() {
             <span className="text-xl font-black tracking-tighter text-white uppercase group-hover:text-[#ec1313] transition-colors">
               PKA291
             </span>
-          </Link>
+          </Link>Sttings
         </div>
 
         <div className="flex-1 overflow-y-auto terminal-scroll py-4 px-3 space-y-6">
