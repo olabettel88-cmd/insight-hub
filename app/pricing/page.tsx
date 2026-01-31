@@ -287,9 +287,9 @@ export default function PricingPage() {
                         <div className="flex justify-between items-start mb-6">
                           <h4 className="text-[10px] font-black text-[#ec1313] uppercase tracking-[0.4em]">{plan.codeName}</h4>
                           {plan.id === 'lifetime' ? (
-                            <span className="text-[8px] border border-[rgba(236,19,19,0.4)] px-2 py-0.5 text-[#ec1313] font-mono font-black">LIFETIME</span>
+                            <span className="text-[8px] border border-[rgba(236,19,19,0.4)] px-2 py-0.5 text-[#ec1313] font-bold tracking-widest font-black">LIFETIME</span>
                           ) : (
-                            <span className="text-[8px] text-slate-500 font-mono">ID: 00{index + 1}</span>
+                            <span className="text-[8px] text-slate-500 font-bold tracking-widest">ID: 00{index + 1}</span>
                           )}
                         </div>
                         <div className="flex items-baseline gap-2">

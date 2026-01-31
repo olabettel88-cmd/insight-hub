@@ -123,7 +123,7 @@ const FireAvatar = () => (
     {/* Anime Style Floating Fire */}
     <div className="absolute -left-6 top-1/2 -translate-y-1/2 h-20 w-8 bg-[#ec1313] blur-xl animate-pulse opacity-60 mix-blend-screen pointer-events-none"></div>
     <div className="absolute -right-6 top-1/2 -translate-y-1/2 h-20 w-8 bg-[#ec1313] blur-xl animate-pulse delay-100 opacity-60 mix-blend-screen pointer-events-none"></div>
-    <span className="relative z-10 font-black text-[#ec1313] text-xl font-mono drop-shadow-[0_0_8px_rgba(236,19,19,0.8)]">P</span>
+    <span className="relative z-10 font-black text-[#ec1313] text-xl drop-shadow-[0_0_8px_rgba(236,19,19,0.8)]">P</span>
   </div>
 );
 
@@ -275,7 +275,7 @@ export default function DashboardPage() {
             <h1 className="text-3xl font-black text-white uppercase tracking-widest mb-2">
               Welcome back, <span className="text-[#ec1313]">{user.username}</span>
             </h1>
-            <p className="text-slate-400 font-mono text-xs uppercase tracking-widest">
+            <p className="text-slate-400 font-bold text-xs uppercase tracking-widest">
               SYSTEM_STATUS: <span className="text-green-500">ONLINE</span> // PKA291 <span className="text-[#ec1313]">2026</span>
             </p>
           </div>
@@ -318,7 +318,7 @@ export default function DashboardPage() {
                   </span>
                   <span className="text-lg font-bold text-white">OPERATIONAL</span>
                 </div>
-                <div className="text-[10px] text-slate-500 font-mono mt-2">LATENCY: 12ms</div>
+                <div className="text-[10px] text-slate-500 font-bold tracking-widest mt-2">LATENCY: 12ms</div>
               </div>
             </Card>
           </div>
@@ -376,7 +376,7 @@ export default function DashboardPage() {
         <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
           <div className="border-b border-[#ec1313]/30 pb-6">
             <h1 className="text-2xl font-black text-white uppercase tracking-widest mb-2">Account Settings</h1>
-            <p className="text-slate-400 font-mono text-xs uppercase tracking-widest">
+            <p className="text-slate-400 font-bold text-xs uppercase tracking-widest">
               MANAGE_CREDENTIALS // SECURITY_LEVEL_HIGH
             </p>
           </div>
@@ -466,7 +466,7 @@ export default function DashboardPage() {
                  </label>
                  <div className="bg-black border border-[#ec1313]/20 rounded p-4 relative group">
                    <div className="flex items-center gap-4">
-                     <div className="flex-1 font-mono text-sm break-all text-[#ec1313] leading-relaxed">
+                     <div className="flex-1 font-bold tracking-widest text-sm break-all text-[#ec1313] leading-relaxed">
                        {showApiKey ? user.apiKey : '•'.repeat(48)}
                      </div>
                      <Button

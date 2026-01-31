@@ -174,7 +174,7 @@ export default function LoginPage() {
           </div>
         </div>
 
-        <div className="text-center mt-6 text-[9px] font-mono text-slate-600 uppercase tracking-widest">
+        <div className="text-center mt-6 text-[9px] font-bold text-slate-600 uppercase tracking-widest">
           PKA291 2026
         </div>
       </div>

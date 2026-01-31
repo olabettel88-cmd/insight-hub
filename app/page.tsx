@@ -202,7 +202,7 @@ export default function Home() {
                   <div className="mb-10">
                     <div className="flex justify-between items-start mb-6">
                       <h4 className="text-[10px] font-black text-[#ec1313] uppercase tracking-[0.4em]">BASIC_ID</h4>
-                      <span className="text-[8px] text-slate-500 font-mono">ID: 001</span>
+                      <span className="text-[8px] text-slate-500 font-bold tracking-widest">ID: 001</span>
                     </div>
                     <div className="flex items-baseline gap-2">
                       <span className="text-5xl font-black tracking-tighter">$20</span>
@@ -321,7 +321,7 @@ export default function Home() {
                   <div className="mb-10">
                     <div className="flex justify-between items-start mb-6">
                       <h4 className="text-[10px] font-black text-[#ec1313] uppercase tracking-[0.4em]">TERMINAL_ID</h4>
-                      <span className="text-[8px] border border-[rgba(236,19,19,0.4)] px-2 py-0.5 text-[#ec1313] font-mono font-black">LIFETIME</span>
+                      <span className="text-[8px] border border-[rgba(236,19,19,0.4)] px-2 py-0.5 text-[#ec1313] font-bold tracking-widest font-black">LIFETIME</span>
                     </div>
                     <div className="flex items-baseline gap-2">
                       <span className="text-5xl font-black tracking-tighter">$300</span>

@@ -81,7 +81,7 @@ export default function DocsPage() {
 
               <div>
                 <h4 className="font-bold uppercase text-[#ec1313] mb-2">Response</h4>
-                <div className="bg-black/40 border border-[rgba(236,19,19,0.2)] p-4 rounded font-mono text-xs">
+                <div className="bg-black/40 border border-[rgba(236,19,19,0.2)] p-4 rounded font-bold tracking-widest text-xs">
                   <p>{`{`}</p>
                   <p className="ml-4">{`"success": true,`}</p>
                   <p className="ml-4">{`"results": [...],`}</p>

@@ -490,7 +490,7 @@ export default function AdminDashboard() {
                     </div>
                   ))}
                 </div>
-                <div className="flex justify-between mt-4 text-xs text-zinc-500 font-mono">
+                <div className="flex justify-between mt-4 text-xs text-zinc-500 font-bold tracking-widest">
                   <span>00:00</span>
                   <span>06:00</span>
                   <span>12:00</span>

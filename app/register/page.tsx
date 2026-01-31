@@ -212,7 +212,7 @@ export default function RegisterPage() {
                     type="text"
                     value={captchaInput}
                     onChange={(e) => setCaptchaInput(e.target.value.toUpperCase())}
-                    className="h-12 flex-1 bg-black/40 border border-[rgba(236,19,19,0.2)] text-white placeholder-slate-600 focus:border-[#ec1313] uppercase tracking-widest font-mono text-lg text-center"
+                    className="h-12 flex-1 bg-black/40 border border-[rgba(236,19,19,0.2)] text-white placeholder-slate-600 focus:border-[#ec1313] uppercase tracking-widest font-bold text-lg text-center"
                     placeholder="ENTER CODE"
                     disabled={loading}
                   />
@@ -256,7 +256,7 @@ export default function RegisterPage() {
             <div className="bg-black/40 border-2 border-[rgba(236,19,19,0.5)] p-4 rounded space-y-3">
               <p className="text-[10px] font-bold uppercase tracking-widest text-[#ec1313]">API_KEY_GENERATED</p>
               <div className="flex items-center gap-2">
-                <code className="flex-1 bg-black/50 p-3 rounded text-[#ec1313] font-mono text-[11px] sm:text-xs break-all border border-[#ec1313]/20 shadow-[0_0_10px_rgba(236,19,19,0.2)] leading-relaxed">
+                <code className="flex-1 bg-black/50 p-3 rounded text-[#ec1313] font-bold tracking-widest text-[11px] sm:text-xs break-all border border-[#ec1313]/20 shadow-[0_0_10px_rgba(236,19,19,0.2)] leading-relaxed">
                   {apiKey}
                 </code>
                 <button 
@@ -315,7 +315,7 @@ export default function RegisterPage() {
           </div>
         )}
 
-        <div className="text-center mt-6 text-[9px] font-mono text-slate-600 uppercase tracking-widest">
+        <div className="text-center mt-6 text-[9px] font-bold text-slate-600 uppercase tracking-widest">
           PKA291 2026
         </div>
       </div>
