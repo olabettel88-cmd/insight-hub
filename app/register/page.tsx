@@ -186,6 +186,39 @@ export default function RegisterPage() {
                 />
               </div>
 
+              <div>
+                <label className="text-xs font-bold uppercase tracking-widest text-slate-400 block mb-2">
+                  Security Verification
+                </label>
+                <div className="flex gap-3 items-center">
+                  <div 
+                    className="relative bg-black border border-[rgba(236,19,19,0.2)] rounded w-36 h-12 flex-shrink-0 cursor-pointer group overflow-hidden"
+                    onClick={refreshCaptcha}
+                    title="Click to refresh captcha"
+                  >
+                    {captchaUrl ? (
+                      <img 
+                        src={captchaUrl} 
+                        alt="Captcha Code" 
+                        className="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity" 
+                        style={{ display: 'block' }}
+                      />
+                    ) : (
+                      <div className="w-full h-full flex items-center justify-center text-[10px] text-slate-500">Loading...</div>
+                    )}
+                    <div className="absolute inset-0 bg-gradient-to-r from-black/20 via-transparent to-black/20 pointer-events-none"></div>
+                  </div>
+                  <Input
+                    type="text"
+                    value={captchaInput}
+                    onChange={(e) => setCaptchaInput(e.target.value.toUpperCase())}
+                    className="h-12 flex-1 bg-black/40 border border-[rgba(236,19,19,0.2)] text-white placeholder-slate-600 focus:border-[#ec1313] uppercase tracking-widest font-mono text-lg text-center"
+                    placeholder="ENTER CODE"
+                    disabled={loading}
+                  />
+                </div>
+              </div>
+
               {error && (
                 <div className="text-red-500 text-sm font-bold border border-red-500/20 bg-red-500/10 p-3 rounded">
                   {error}
