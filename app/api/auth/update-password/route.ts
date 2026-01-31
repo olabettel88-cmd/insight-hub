@@ -1,5 +1,5 @@
 import { supabase, hashPassword } from '@/lib/auth';
-import { verifyAccessToken } from '@/lib/jwt';
+import { verifyToken } from '@/lib/jwt';
 import { headers } from 'next/headers';
 
 export async function POST(request: Request) {
@@ -12,7 +12,7 @@ export async function POST(request: Request) {
     }
 
     const token = authHeader.split(' ')[1];
-    const payload = await verifyAccessToken(token);
+    const payload = await verifyToken(token);
 
     if (!payload || !payload.userId) {
        return Response.json({ error: 'Invalid token' }, { status: 401 });
