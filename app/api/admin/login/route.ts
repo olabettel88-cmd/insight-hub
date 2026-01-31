@@ -8,7 +8,8 @@ export async function POST(request: Request) {
     // In production, this should be an environment variable
     const adminPassword = process.env.ADMIN_PASSWORD || 'admin123';
     
-    if (password === adminPassword) {
+    // Use trimming to avoid issues with copy-paste spaces
+    if (password?.trim() === adminPassword?.trim()) {
       // Generate a simple token (in production use JWT)
       // Matching the format expected by verifyAdminToken in other routes
       const tokenPayload = JSON.stringify({ 
