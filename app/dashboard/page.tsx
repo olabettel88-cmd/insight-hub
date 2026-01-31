@@ -127,39 +127,119 @@ const FireAvatar = () => (
   </div>
 );
 
-const ToolPlaceholder = ({ title }: { title: string }) => (
-  <div className="flex flex-col h-full animate-in fade-in duration-500">
-    <div className="mb-6 border-b border-[#ec1313]/30 pb-4">
-      <h2 className="text-2xl font-black uppercase tracking-widest text-white flex items-center gap-3">
-        <span className="w-2 h-8 bg-[#ec1313]"></span>
-        {title}
-      </h2>
-      <p className="text-xs text-[#ec1313] mt-1 font-bold uppercase tracking-widest">AWAITING_INPUT // SYSTEM_READY</p>
-    </div>
+const ToolModule = ({ id, title }: { id: string, title: string }) => {
+  const [query, setQuery] = useState('');
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [results, setResults] = useState<any>(null);
+  const [loading, setLoading] = useState(false);
 
-    <Card className="flex-1 bg-black/40 border border-[#ec1313]/30 p-8 flex flex-col items-center justify-center text-center backdrop-blur-sm relative overflow-hidden">
-      <div className="absolute inset-0 scanline-overlay opacity-30 pointer-events-none"></div>
-      <div className="w-24 h-24 rounded-full border border-[#ec1313]/30 flex items-center justify-center mb-6 bg-[#ec1313]/5">
-        <Terminal className="w-10 h-10 text-[#ec1313] animate-pulse" />
+  const handleSearch = async () => {
+    if (id === 'us-npd' && (!firstName || !lastName)) return;
+    if (id !== 'us-npd' && !query) return;
+
+    setLoading(true);
+    setResults(null);
+    try {
+        const token = localStorage.getItem('authToken');
+        let searchBody;
+        
+        if (id === 'us-npd') {
+            searchBody = { module: id, query: `${firstName} ${lastName}` };
+        } else {
+            searchBody = { module: id, query };
+        }
+
+        const res = await fetch('/api/osint', {
+            method: 'POST',
+            headers: { 
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            },
+            body: JSON.stringify(searchBody)
+        });
+        const data = await res.json();
+        setResults(data);
+    } catch (e) {
+        toast.error('Search failed');
+    } finally {
+        setLoading(false);
+    }
+  };
+
+  return (
+    <div className="flex flex-col h-full animate-in fade-in duration-500">
+      <div className="mb-6 border-b border-[#ec1313]/30 pb-4">
+        <h2 className="text-2xl font-black uppercase tracking-widest text-white flex items-center gap-3">
+          <span className="w-2 h-8 bg-[#ec1313]"></span>
+          {title}
+        </h2>
+        <p className="text-xs text-[#ec1313] mt-1 font-bold uppercase tracking-widest">
+            {loading ? 'EXECUTING_SEARCH...' : 'AWAITING_INPUT // SYSTEM_READY'}
+        </p>
       </div>
-      <h3 className="text-lg font-bold text-white mb-2 uppercase">Module Loaded</h3>
-      <p className="text-slate-400 max-w-sm mb-6 text-sm">
-        The {title} module is initialized and ready for queries. Connect to the PKA291 Neural Network to begin.
-      </p>
-      <div className="w-full max-w-md">
-        <div className="flex gap-2">
-          <Input 
-            placeholder={`Enter target for ${title}...`} 
-            className="bg-black/50 border-[#ec1313]/30 text-white placeholder:text-slate-600 font-bold tracking-widest"
-          />
-          <Button className="bg-[#ec1313] hover:bg-[#c41111] text-white font-bold border border-[#ec1313]">
-            EXECUTE
-          </Button>
-        </div>
+
+      <div className="space-y-6">
+        <Card className="bg-black/40 border border-[#ec1313]/30 p-8 flex flex-col items-center justify-center text-center backdrop-blur-sm relative overflow-hidden">
+            <div className="absolute inset-0 scanline-overlay opacity-30 pointer-events-none"></div>
+            <div className="w-full max-w-xl">
+                <div className="flex gap-2">
+                {id === 'us-npd' ? (
+                    <div className="flex gap-2 w-full">
+                        <Input 
+                            value={firstName}
+                            onChange={(e) => setFirstName(e.target.value)}
+                            placeholder="First Name" 
+                            className="bg-black/50 border-[#ec1313]/30 text-white placeholder:text-slate-600 font-bold tracking-widest h-12"
+                        />
+                        <Input 
+                            value={lastName}
+                            onChange={(e) => setLastName(e.target.value)}
+                            placeholder="Last Name" 
+                            className="bg-black/50 border-[#ec1313]/30 text-white placeholder:text-slate-600 font-bold tracking-widest h-12"
+                            onKeyDown={(e) => e.key === 'Enter' && handleSearch()}
+                        />
+                    </div>
+                ) : (
+                    <Input 
+                        value={query}
+                        onChange={(e) => setQuery(e.target.value)}
+                        placeholder={`Enter target for ${title}...`} 
+                        className="bg-black/50 border-[#ec1313]/30 text-white placeholder:text-slate-600 font-bold tracking-widest h-12"
+                        onKeyDown={(e) => e.key === 'Enter' && handleSearch()}
+                    />
+                )}
+                <Button 
+                    onClick={handleSearch}
+                    disabled={loading}
+                    className="bg-[#ec1313] hover:bg-[#c41111] text-white font-bold border border-[#ec1313] h-12 px-8 tracking-widest"
+                >
+                    {loading ? '...' : 'EXECUTE'}
+                </Button>
+                </div>
+            </div>
+        </Card>
+
+        {results && (
+            <Card className="bg-black/40 border border-[#ec1313]/30 p-6 backdrop-blur-sm relative overflow-hidden">
+                <div className="absolute inset-0 bg-[#ec1313]/5 pointer-events-none"></div>
+                <div className="flex items-center justify-between mb-4 border-b border-[#ec1313]/20 pb-2">
+                    <h3 className="text-lg font-bold text-white uppercase tracking-widest">Search Results</h3>
+                    <Badge variant="outline" className="border-[#ec1313] text-[#ec1313] font-bold">
+                        STATUS: {results.success ? 'FOUND' : 'COMPLETE'}
+                    </Badge>
+                </div>
+                <div className="bg-black/50 border border-[#ec1313]/20 p-4 rounded overflow-x-auto max-h-[500px] terminal-scroll">
+                    <pre className="text-xs text-green-500 font-mono">
+                        {JSON.stringify(results, null, 2)}
+                    </pre>
+                </div>
+            </Card>
+        )}
       </div>
-    </Card>
-  </div>
-);
+    </div>
+  );
+};
 
 // --- Main Page Component ---
 
@@ -260,7 +340,7 @@ export default function DashboardPage() {
   if (loading) {
     return (
       <div className="min-h-screen bg-black flex items-center justify-center">
-        <div className="text-[#ec1313] font-bold tracking-widest text-sm animate-pulse">INITIALIZING_PKA291...</div>
+        <div className="text-[#ec1313] font-bold tracking-widest text-sm animate-pulse">LOADING...</div>
       </div>
     );
   }
@@ -276,7 +356,7 @@ export default function DashboardPage() {
               Welcome back, <span className="text-[#ec1313]">{user.username}</span>
             </h1>
             <p className="text-slate-400 font-bold text-xs uppercase tracking-widest">
-              SYSTEM_STATUS: <span className="text-green-500">ONLINE</span> // PKA291 <span className="text-[#ec1313]">2026</span>
+               // PKA291 <span className="text-[#ec1313]">2026</span>
             </p>
           </div>
 
@@ -303,7 +383,6 @@ export default function DashboardPage() {
               <div className="relative z-10">
                 <div className="text-slate-400 text-xs font-bold uppercase tracking-widest mb-2">Current Plan</div>
                 <div className="text-3xl font-black text-[#ec1313] uppercase mb-1">{user.planType}</div>
-                <div className="text-[10px] text-slate-500 font-mono mt-1">RENEWAL_PENDING</div>
               </div>
             </Card>
 
@@ -501,7 +580,7 @@ export default function DashboardPage() {
     // Default: Tool Placeholder
     const category = categories.find(c => c.items.some(i => i.id === activeTab));
     const item = category?.items.find(i => i.id === activeTab);
-    return <ToolPlaceholder title={item?.label || 'Unknown Module'} />;
+    return <ToolModule id={item?.id || ''} title={item?.label || 'Unknown Module'} />;
   };
 
   return (
@@ -519,7 +598,7 @@ export default function DashboardPage() {
               PKA291
             </span>
           </Link>
-        </div>wdeswdes
+        </div>
 
         <div className="flex-1 overflow-y-auto terminal-scroll py-4 px-3 space-y-6">
           {categories.map((cat) => (

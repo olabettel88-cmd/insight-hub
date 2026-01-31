@@ -1,0 +1,2904 @@
+Breach Lookup
+Search comprehensive breach databases
+
+GET
+https://www.breach.rip/api/osintcat/breach
+Parameters:
+query
+(string)
+required
+Search query
+
+Example Request:
+
+curl -X GET "https://www.breach.rip/api/osintcat/breach?query=value" \
+  -H "X-API-Key: YOUR_API_KEY"
+Response Format:
+{
+  "success": true,
+  "data": {
+    // Response data varies by endpoint
+  },
+  "timestamp": "2025-01-20T12:00:00.000Z"
+}
+Discord Lookup
+Lookup Discord user information by Discord ID
+
+GET
+https://www.breach.rip/api/osintcat/discord
+Parameters:
+query
+(string)
+required
+Discord ID
+
+Example Request:
+
+curl -X GET "https://www.breach.rip/api/osintcat/discord?query=value" \
+  -H "X-API-Key: YOUR_API_KEY"
+Response Format:
+{
+  "success": true,
+  "data": {
+    // Response data varies by endpoint
+  },
+  "timestamp": "2025-01-20T12:00:00.000Z"
+}
+Discord Stalker
+Advanced Discord user tracking and information gathering
+
+GET
+https://www.breach.rip/api/osintcat/discord-stalker
+Parameters:
+query
+(string)
+required
+Discord ID
+
+Example Request:
+
+curl -X GET "https://www.breach.rip/api/osintcat/discord-stalker?query=value" \
+  -H "X-API-Key: YOUR_API_KEY"
+Response Format:
+{
+  "success": true,
+  "data": {
+    // Response data varies by endpoint
+  },
+  "timestamp": "2025-01-20T12:00:00.000Z"
+}
+Discord to Roblox
+Find linked Roblox accounts from Discord ID
+
+GET
+https://www.breach.rip/api/osintcat/discord-to-roblox
+Parameters:
+query
+(string)
+required
+Discord ID
+
+Example Request:
+
+curl -X GET "https://www.breach.rip/api/osintcat/discord-to-roblox?query=value" \
+  -H "X-API-Key: YOUR_API_KEY"
+Response Format:
+{
+  "success": true,
+  "data": {
+    // Response data varies by endpoint
+  },
+  "timestamp": "2025-01-20T12:00:00.000Z"
+}
+Roblox Lookup
+Find Roblox user profiles and information
+
+GET
+https://www.breach.rip/api/osintcat/roblox
+Parameters:
+query
+(string)
+required
+Roblox username
+
+Example Request:
+
+curl -X GET "https://www.breach.rip/api/osintcat/roblox?query=value" \
+  -H "X-API-Key: YOUR_API_KEY"
+Response Format:
+{
+  "success": true,
+  "data": {
+    // Response data varies by endpoint
+  },
+  "timestamp": "2025-01-20T12:00:00.000Z"
+}
+Reddit Lookup
+Get Reddit user information and activity
+
+GET
+https://www.breach.rip/api/osintcat/reddit
+Parameters:
+query
+(string)
+required
+Reddit username
+
+Example Request:
+
+curl -X GET "https://www.breach.rip/api/osintcat/reddit?query=value" \
+  -H "X-API-Key: YOUR_API_KEY"
+Response Format:
+{
+  "success": true,
+  "data": {
+    // Response data varies by endpoint
+  },
+  "timestamp": "2025-01-20T12:00:00.000Z"
+}
+Email OSINT
+Comprehensive email intelligence gathering and breach checking
+
+GET
+https://www.breach.rip/api/osintcat/email-osint
+Parameters:
+query
+(string)
+required
+Email address
+
+Example Request:
+
+curl -X GET "https://www.breach.rip/api/osintcat/email-osint?query=value" \
+  -H "X-API-Key: YOUR_API_KEY"
+Response Format:
+{
+  "success": true,
+  "data": {
+    // Response data varies by endpoint
+  },
+  "timestamp": "2025-01-20T12:00:00.000Z"
+}
+Phone OSINT
+Phone number intelligence and carrier information lookup
+
+GET
+https://www.breach.rip/api/osintcat/phone-osint
+Parameters:
+query
+(string)
+required
+Phone number
+
+Example Request:
+
+curl -X GET "https://www.breach.rip/api/osintcat/phone-osint?query=value" \
+  -H "X-API-Key: YOUR_API_KEY"
+Response Format:
+{
+  "success": true,
+  "data": {
+    // Response data varies by endpoint
+  },
+  "timestamp": "2025-01-20T12:00:00.000Z"
+}
+GitHub OSINT
+Find GitHub user information from email
+
+GET
+https://www.breach.rip/api/osintcat/github-osint
+Parameters:
+query
+(string)
+required
+Email address
+
+Example Request:
+
+curl -X GET "https://www.breach.rip/api/osintcat/github-osint?query=value" \
+  -H "X-API-Key: YOUR_API_KEY"
+Response Format:
+{
+  "success": true,
+  "data": {
+    // Response data varies by endpoint
+  },
+  "timestamp": "2025-01-20T12:00:00.000Z"
+}
+Username Lookup
+Search for username across multiple platforms
+
+GET
+https://www.breach.rip/api/osintcat/username
+Parameters:
+query
+(string)
+required
+Username
+
+Example Request:
+
+curl -X GET "https://www.breach.rip/api/osintcat/username?query=value" \
+  -H "X-API-Key: YOUR_API_KEY"
+Response Format:
+{
+  "success": true,
+  "data": {
+    // Response data varies by endpoint
+  },
+  "timestamp": "2025-01-20T12:00:00.000Z"
+}
+Minecraft Lookup
+Get Minecraft user profile information
+
+GET
+https://www.breach.rip/api/osintcat/minecraft
+Parameters:
+query
+(string)
+required
+Minecraft username
+
+type
+(string)
+Lookup type
+
+Example Request:
+
+curl -X GET "https://www.breach.rip/api/osintcat/minecraft?query=value&type=value" \
+  -H "X-API-Key: YOUR_API_KEY"
+Response Format:
+{
+  "success": true,
+  "data": {
+    // Response data varies by endpoint
+  },
+  "timestamp": "2025-01-20T12:00:00.000Z"
+}
+IP Lookup
+IP address geolocation and information
+
+GET
+https://www.breach.rip/api/osintcat/ip
+Parameters:
+query
+(string)
+required
+IP address
+
+Example Request:
+
+curl -X GET "https://www.breach.rip/api/osintcat/ip?query=value" \
+  -H "X-API-Key: YOUR_API_KEY"
+Response Format:
+{
+  "success": true,
+  "data": {
+    // Response data varies by endpoint
+  },
+  "timestamp": "2025-01-20T12:00:00.000Z"
+}
+Domain Lookup
+Domain registration and DNS information
+
+GET
+https://www.breach.rip/api/osintcat/domain
+Parameters:
+query
+(string)
+required
+Domain name
+
+Example Request:
+
+curl -X GET "https://www.breach.rip/api/osintcat/domain?query=value" \
+  -H "X-API-Key: YOUR_API_KEY"
+Response Format:
+{
+  "success": true,
+  "data": {
+    // Response data varies by endpoint
+  },
+  "timestamp": "2025-01-20T12:00:00.000Z"
+}
+NPD Search
+Search National Public Data (NPD) records using first and last name. Returns comprehensive personal information including contact details, addresses, and demographic data.
+
+NPD contains US consumer records. Results may include multiple matches for common names. More specific queries yield better results.
+
+GET
+https://www.breach.rip/api/osintcat/npd
+Parameters:
+first_name
+(string)
+required
+First name to search
+
+last_name
+(string)
+required
+Last name to search
+
+Example Request:
+
+curl -X GET "https://www.breach.rip/api/osintcat/npd?first_name=value&last_name=value" \
+  -H "X-API-Key: YOUR_API_KEY"
+Response Format:
+{
+  "success": true,
+  "data": {
+    "results": [
+      {
+        "first_name": "John",
+        "middle_name": "A",
+        "last_name": "Doe",
+        "email": "john.doe@example.com",
+        "phone": "+1-555-123-4567",
+        "street": "123 Main St",
+        "city": "New York",
+        "state": "NY",
+        "zip": "10001",
+        "dob": "1980-05-15",
+        "ssn": "***-**-1234"
+      }
+      // ... more results
+    ],
+    "count": 25,
+    "query": {
+      "first_name": "John",
+      "last_name": "Doe"
+    }
+  },
+  "timestamp": "2026-01-02T12:00:00.000Z"
+}
+Phone Lookup
+Phone number lookup and validation
+
+GET
+https://www.breach.rip/api/osintcat/phone
+Parameters:
+query
+(string)
+required
+Phone number
+
+Example Request:
+
+curl -X GET "https://www.breach.rip/api/osintcat/phone?query=value" \
+  -H "X-API-Key: YOUR_API_KEY"
+Response Format:
+{
+  "success": true,
+  "data": {
+    // Response data varies by endpoint
+  },
+  "timestamp": "2025-01-20T12:00:00.000Z"
+}
+
+
+Universal Search
+Universal search across multiple intelligence sources
+
+POST
+https://www.breach.rip/api/osintdog/search
+Parameters:
+search_field
+(string)
+required
+Field type: email, username, phone, domain, ip
+
+search_value
+(string)
+required
+Value to search
+
+Example Request:
+
+curl -X POST "https://www.breach.rip/api/osintdog/search" \
+  -H "Content-Type: application/json" \
+  -H "X-API-Key: YOUR_API_KEY" \
+  -d '{"search_field": "value", "search_value": "value"}'
+Response Format:
+{
+  "success": true,
+  "data": {
+    // Response data varies by endpoint
+  },
+  "timestamp": "2025-01-20T12:00:00.000Z"
+}
+Snusbase
+Snusbase database search via OSINTDog
+
+POST
+https://www.breach.rip/api/osintdog/snusbase
+Parameters:
+terms
+(array)
+required
+Search terms
+
+types
+(array)
+required
+Search types
+
+wildcard
+(boolean)
+Enable wildcard
+
+Example Request:
+
+curl -X POST "https://www.breach.rip/api/osintdog/snusbase" \
+  -H "Content-Type: application/json" \
+  -H "X-API-Key: YOUR_API_KEY" \
+  -d '{"terms": "value", "types": "value", "wildcard": "value"}'
+Response Format:
+{
+  "success": true,
+  "data": {
+    // Response data varies by endpoint
+  },
+  "timestamp": "2025-01-20T12:00:00.000Z"
+}
+LeakCheck
+LeakCheck v2 search
+
+POST
+https://www.breach.rip/api/osintdog/leakcheck
+Parameters:
+term
+(string)
+required
+Search term
+
+search_type
+(string)
+required
+Type: email, username, phone, domain, ip, auto, hash
+
+Example Request:
+
+curl -X POST "https://www.breach.rip/api/osintdog/leakcheck" \
+  -H "Content-Type: application/json" \
+  -H "X-API-Key: YOUR_API_KEY" \
+  -d '{"term": "value", "search_type": "value"}'
+Response Format:
+{
+  "success": true,
+  "data": {
+    // Response data varies by endpoint
+  },
+  "timestamp": "2025-01-20T12:00:00.000Z"
+}
+HackCheck
+HackCheck database search
+
+POST
+https://www.breach.rip/api/osintdog/hackcheck
+Parameters:
+term
+(string)
+required
+Search term
+
+search_type
+(string)
+required
+Type: email, username, lastip
+
+Example Request:
+
+curl -X POST "https://www.breach.rip/api/osintdog/hackcheck" \
+  -H "Content-Type: application/json" \
+  -H "X-API-Key: YOUR_API_KEY" \
+  -d '{"term": "value", "search_type": "value"}'
+Response Format:
+{
+  "success": true,
+  "data": {
+    // Response data varies by endpoint
+  },
+  "timestamp": "2025-01-20T12:00:00.000Z"
+}
+BreachBase
+BreachBase database search
+
+POST
+https://www.breach.rip/api/osintdog/breachbase
+Parameters:
+term
+(string)
+required
+Search term
+
+search_type
+(string)
+required
+Type: email, username, lastip
+
+Example Request:
+
+curl -X POST "https://www.breach.rip/api/osintdog/breachbase" \
+  -H "Content-Type: application/json" \
+  -H "X-API-Key: YOUR_API_KEY" \
+  -d '{"term": "value", "search_type": "value"}'
+Response Format:
+{
+  "success": true,
+  "data": {
+    // Response data varies by endpoint
+  },
+  "timestamp": "2025-01-20T12:00:00.000Z"
+}
+IntelVault
+IntelVault breach database
+
+POST
+https://www.breach.rip/api/osintdog/intelvault
+Parameters:
+search_field
+(string)
+required
+Field: email, username, phone, domain, ip
+
+search_value
+(string)
+required
+Value to search
+
+Example Request:
+
+curl -X POST "https://www.breach.rip/api/osintdog/intelvault" \
+  -H "Content-Type: application/json" \
+  -H "X-API-Key: YOUR_API_KEY" \
+  -d '{"search_field": "value", "search_value": "value"}'
+Response Format:
+{
+  "success": true,
+  "data": {
+    // Response data varies by endpoint
+  },
+  "timestamp": "2025-01-20T12:00:00.000Z"
+}
+Shodan Host
+Shodan host information lookup
+
+POST
+https://www.breach.rip/api/osintdog/shodan-host
+Parameters:
+ip
+(string)
+required
+IP address
+
+Example Request:
+
+curl -X POST "https://www.breach.rip/api/osintdog/shodan-host" \
+  -H "Content-Type: application/json" \
+  -H "X-API-Key: YOUR_API_KEY" \
+  -d '{"ip": "value"}'
+Response Format:
+{
+  "success": true,
+  "data": {
+    // Response data varies by endpoint
+  },
+  "timestamp": "2025-01-20T12:00:00.000Z"
+}
+GitHub OSINT
+Find GitHub user from email
+
+GET
+https://www.breach.rip/api/osintdog/github
+Parameters:
+email
+(string)
+required
+Email address
+
+Example Request:
+
+curl -X GET "https://www.breach.rip/api/osintdog/github?email=value" \
+  -H "X-API-Key: YOUR_API_KEY"
+Response Format:
+{
+  "success": true,
+  "data": {
+    // Response data varies by endpoint
+  },
+  "timestamp": "2025-01-20T12:00:00.000Z"
+}
+Minecraft OSINT
+Minecraft user intelligence
+
+GET
+https://www.breach.rip/api/osintdog/minecraft
+Parameters:
+query
+(string)
+required
+Minecraft username
+
+Example Request:
+
+curl -X GET "https://www.breach.rip/api/osintdog/minecraft?query=value" \
+  -H "X-API-Key: YOUR_API_KEY"
+Response Format:
+{
+  "success": true,
+  "data": {
+    // Response data varies by endpoint
+  },
+  "timestamp": "2025-01-20T12:00:00.000Z"
+}
+Discord Stalker
+Advanced Discord tracking
+
+GET
+https://www.breach.rip/api/osintdog/discord-stalker
+Parameters:
+query
+(string)
+required
+Discord ID
+
+Example Request:
+
+curl -X GET "https://www.breach.rip/api/osintdog/discord-stalker?query=value" \
+  -H "X-API-Key: YOUR_API_KEY"
+Response Format:
+{
+  "success": true,
+  "data": {
+    // Response data varies by endpoint
+  },
+  "timestamp": "2025-01-20T12:00:00.000Z"
+}
+
+
+IntelX Storage ID
+Retrieve intelligence data from IntelX using storage ID and bucket. Download file directly from response.
+
+GET
+https://www.breach.rip/api/intelx
+Parameters:
+query
+(string)
+required
+Storage ID to retrieve
+
+bucket
+(string)
+required
+Bucket: darknet, dns, documents.public.scihub, dumpster, leaks.logs, leaks.private, leaks.public, pastes, web.gov.ru
+
+Example Request:
+
+curl -X GET "https://www.breach.rip/api/intelx?query=value&bucket=value" \
+  -H "X-API-Key: YOUR_API_KEY"
+Response Format:
+{
+  "success": true,
+  "data": {
+    // Response data varies by endpoint
+  },
+  "timestamp": "2025-01-20T12:00:00.000Z"
+}
+IntelX Scrape
+Intelligence X data scraping
+
+GET
+https://www.breach.rip/api/intelx/scrape
+Parameters:
+query
+(string)
+required
+Search query
+
+Example Request:
+
+curl -X GET "https://www.breach.rip/api/intelx/scrape?query=value" \
+  -H "X-API-Key: YOUR_API_KEY"
+Response Format:
+{
+  "success": true,
+  "data": {
+    // Response data varies by endpoint
+  },
+  "timestamp": "2025-01-20T12:00:00.000Z"
+}
+
+
+DB Search
+Search across multiple breach databases (30-60 second response time)
+
+This endpoint searches a large number of databases and typically takes 30-60 seconds to complete
+
+GET
+https://www.breach.rip/api/search/db
+Parameters:
+query
+(string)
+required
+Email or password
+
+term
+(string)
+required
+email or password
+
+Example Request:
+
+curl -X GET "https://www.breach.rip/api/search/db?query=value&term=value" \
+  -H "X-API-Key: YOUR_API_KEY"
+Response Format:
+{
+  "success": true,
+  "data": {
+    // Response data varies by endpoint
+  },
+  "timestamp": "2025-01-20T12:00:00.000Z"
+}
+Discord Breach DB
+Search Discord breach database
+
+GET
+https://www.breach.rip/api/discord/breach
+Parameters:
+query
+(string)
+required
+Username or Discord ID
+
+term
+(string)
+required
+username or discord_id
+
+Example Request:
+
+curl -X GET "https://www.breach.rip/api/discord/breach?query=value&term=value" \
+  -H "X-API-Key: YOUR_API_KEY"
+Response Format:
+{
+  "success": true,
+  "data": {
+    // Response data varies by endpoint
+  },
+  "timestamp": "2025-01-20T12:00:00.000Z"
+}
+
+DB Search
+Search across multiple breach databases (30-60 second response time)
+
+This endpoint searches a large number of databases and typically takes 30-60 seconds to complete
+
+GET
+https://www.breach.rip/api/search/db
+Parameters:
+query
+(string)
+required
+Email or password
+
+term
+(string)
+required
+email or password
+
+Example Request:
+
+curl -X GET "https://www.breach.rip/api/search/db?query=value&term=value" \
+  -H "X-API-Key: YOUR_API_KEY"
+Response Format:
+{
+  "success": true,
+  "data": {
+    // Response data varies by endpoint
+  },
+  "timestamp": "2025-01-20T12:00:00.000Z"
+}
+Discord Breach DB
+Search Discord breach database
+
+GET
+https://www.breach.rip/api/discord/breach
+Parameters:
+query
+(string)
+required
+Username or Discord ID
+
+term
+(string)
+required
+username or discord_id
+
+Example Request:
+
+curl -X GET "https://www.breach.rip/api/discord/breach?query=value&term=value" \
+  -H "X-API-Key: YOUR_API_KEY"
+Response Format:
+{
+  "success": true,
+  "data": {
+    // Response data varies by endpoint
+  },
+  "timestamp": "2025-01-20T12:00:00.000Z"
+}
+Crypto Breach DB
+Search cryptocurrency breach database
+
+GET
+https://www.breach.rip/api/cryptobreach
+Parameters:
+query
+(string)
+required
+Search query
+
+Example Request:
+
+curl -X GET "https://www.breach.rip/api/cryptobreach?query=value" \
+  -H "X-API-Key: YOUR_API_KEY"
+Response Format:
+{
+  "success": true,
+  "data": {
+    // Response data varies by endpoint
+  },
+  "timestamp": "2025-01-20T12:00:00.000Z"
+}
+Amazon DB
+Search Amazon database
+
+GET
+https://www.breach.rip/api/amazon/search
+Parameters:
+query
+(string)
+required
+Email or username
+
+term
+(string)
+required
+email or username
+
+Example Request:
+
+curl -X GET "https://www.breach.rip/api/amazon/search?query=value&term=value" \
+  -H "X-API-Key: YOUR_API_KEY"
+Response Format:
+{
+  "success": true,
+  "data": {
+    // Response data varies by endpoint
+  },
+  "timestamp": "2025-01-20T12:00:00.000Z"
+}
+
+LeakOsint Search
+Advanced breach database search with intelligent query parsing. Supports multi-word searches, automatic rearrangement, and precise quoted searches. Cost: (5 + sqrt(Limit * Complexity)) / 5000 USD per request.
+
+Query complexity depends on word count: 1 word=1, 2 words=5, 3 words=16, 3+ words=40. Use double quotes for exact phrase matching. Dates, strings <4 chars, and numbers <6 digits are excluded from word count.
+
+POST
+https://www.breach.rip/api/leakosint-api
+Parameters:
+request
+(string or array)
+required
+Search query or array of queries (e.g., 'john@example.com' or ['john@example.com', 'Jane Doe'])
+
+limit
+(integer)
+Search limit (default: 100, range: 100-10,000). Determines number of returned results and search range.
+
+lang
+(string)
+Language code for results (default: 'en'). Available: en, ru
+
+Example Request:
+
+curl -X POST "https://www.breach.rip/api/leakosint-api" \
+  -H "Content-Type: application/json" \
+  -H "X-API-Key: YOUR_API_KEY" \
+  -d '{"request": "value", "limit": "value", "lang": "value"}'
+Response Format:
+{
+  "success": true,
+  "data": {
+    // Response data varies by endpoint
+  },
+  "timestamp": "2025-01-20T12:00:00.000Z"
+}
+
+Snusbase
+Search Snusbase comprehensive breach database. Returns detailed records including emails, usernames, passwords, IPs, phone numbers, addresses, and more from 1000+ data breaches.
+
+Response includes breach source information (_source field), creation/update timestamps, and complete user profiles. Results are paginated and may contain thousands of records per query.
+
+GET
+https://www.breach.rip/api/snusbase
+Parameters:
+query
+(string)
+required
+Email, username, name, or IP address to search
+
+Example Request:
+
+curl -X GET "https://www.breach.rip/api/snusbase?query=value" \
+  -H "X-API-Key: YOUR_API_KEY"
+Response Format:
+{
+  "success": true,
+  "data": {
+    "success": true,
+    "service": "Snusbase",
+    "query": "john@gmail.com",
+    "count": 1873,
+    "quota_remaining": 999999,
+    "quota_max": 999999,
+    "results": [
+      {
+        "email": "john@gmail.com",
+        "name": "john Harbuck",
+        "_domain": "gmail.com",
+        "phone": "650126548",
+        "address": "3 impasse nawak",
+        "city": "PARIS 04",
+        "zip": "75004",
+        "_source": "2084_DARTY_COM_3239K_STORE_082024"
+      },
+      {
+        "username": "john@gmail.com",
+        "email": "john@gmail.com",
+        "name": "Oley Support",
+        "_domain": "gmail.com",
+        "id": "1150360",
+        "phone": "380125412515",
+        "created": "2016-12-14 17:01:11",
+        "updated": "2017-09-14 09:10:58",
+        "_source": "2082_SPEEDYPAPER_COM_284K_EDU_062025"
+      }
+      // ... more results
+    ],
+    "execution_time_ms": 538,
+    "timestamp": "2026-01-02T12:25:23.982+00:00",
+    "version": "1.1"
+  }
+}
+LeakOSINT (Legacy)
+Legacy breach database search (BreachHub provider)
+
+GET
+https://www.breach.rip/api/leakosint
+Parameters:
+query
+(string)
+required
+Search query
+
+Example Request:
+
+curl -X GET "https://www.breach.rip/api/leakosint?query=value" \
+  -H "X-API-Key: YOUR_API_KEY"
+Response Format:
+{
+  "success": true,
+  "data": {
+    // Response data varies by endpoint
+  },
+  "timestamp": "2025-01-20T12:00:00.000Z"
+}
+IntelVault
+IntelVault breach database search
+
+GET
+https://www.breach.rip/api/intelvault
+Parameters:
+email
+(string)
+required
+Email address
+
+Example Request:
+
+curl -X GET "https://www.breach.rip/api/intelvault?email=value" \
+  -H "X-API-Key: YOUR_API_KEY"
+Response Format:
+{
+  "success": true,
+  "data": {
+    // Response data varies by endpoint
+  },
+  "timestamp": "2025-01-20T12:00:00.000Z"
+}
+HackCheck
+Check if data appears in hack databases
+
+GET
+https://www.breach.rip/api/hackcheck
+Parameters:
+category
+(string)
+required
+email, username, or password
+
+term
+(string)
+required
+Search term
+
+Example Request:
+
+curl -X GET "https://www.breach.rip/api/hackcheck?category=value&term=value" \
+  -H "X-API-Key: YOUR_API_KEY"
+Response Format:
+{
+  "success": true,
+  "data": {
+    // Response data varies by endpoint
+  },
+  "timestamp": "2025-01-20T12:00:00.000Z"
+}
+BreachBase
+BreachBase database search
+
+GET
+https://www.breach.rip/api/breachbase
+Parameters:
+category
+(string)
+required
+email, username, or password
+
+term
+(string)
+required
+Search term
+
+Example Request:
+
+curl -X GET "https://www.breach.rip/api/breachbase?category=value&term=value" \
+  -H "X-API-Key: YOUR_API_KEY"
+Response Format:
+{
+  "success": true,
+  "data": {
+    // Response data varies by endpoint
+  },
+  "timestamp": "2025-01-20T12:00:00.000Z"
+}
+Shodan Host
+Shodan host information lookup
+
+GET
+https://www.breach.rip/api/shodan/host
+Parameters:
+ip
+(string)
+required
+IP address
+
+Example Request:
+
+curl -X GET "https://www.breach.rip/api/shodan/host?ip=value" \
+  -H "X-API-Key: YOUR_API_KEY"
+Response Format:
+{
+  "success": true,
+  "data": {
+    // Response data varies by endpoint
+  },
+  "timestamp": "2025-01-20T12:00:00.000Z"
+}
+Shodan Search
+Search Shodan database
+
+GET
+https://www.breach.rip/api/shodan/search
+Parameters:
+query
+(string)
+required
+Search query
+
+Example Request:
+
+curl -X GET "https://www.breach.rip/api/shodan/search?query=value" \
+  -H "X-API-Key: YOUR_API_KEY"
+Response Format:
+{
+  "success": true,
+  "data": {
+    // Response data varies by endpoint
+  },
+  "timestamp": "2025-01-20T12:00:00.000Z"
+}
+GitHub OSINT
+Find GitHub user emails from commits
+
+GET
+https://www.breach.rip/api/github
+Parameters:
+email
+(string)
+required
+Email address
+
+Example Request:
+
+curl -X GET "https://www.breach.rip/api/github?email=value" \
+  -H "X-API-Key: YOUR_API_KEY"
+Response Format:
+{
+  "success": true,
+  "data": {
+    // Response data varies by endpoint
+  },
+  "timestamp": "2025-01-20T12:00:00.000Z"
+}
+Discord Lookup
+Discord user lookup via BreachHub
+
+GET
+https://www.breach.rip/api/discord/discord-lookup
+Parameters:
+query
+(string)
+required
+Discord query
+
+Example Request:
+
+curl -X GET "https://www.breach.rip/api/discord/discord-lookup?query=value" \
+  -H "X-API-Key: YOUR_API_KEY"
+Response Format:
+{
+  "success": true,
+  "data": {
+    // Response data varies by endpoint
+  },
+  "timestamp": "2025-01-20T12:00:00.000Z"
+}
+Discord Stalker
+Discord stalker via BreachHub
+
+GET
+https://www.breach.rip/api/discord/discord-stalker
+Parameters:
+query
+(string)
+required
+Discord ID
+
+Example Request:
+
+curl -X GET "https://www.breach.rip/api/discord/discord-stalker?query=value" \
+  -H "X-API-Key: YOUR_API_KEY"
+Response Format:
+{
+  "success": true,
+  "data": {
+    // Response data varies by endpoint
+  },
+  "timestamp": "2025-01-20T12:00:00.000Z"
+}
+
+Phone Lookup
+Phone number information including carrier and location
+
+POST
+https://www.breach.rip/api/intelbase/phone
+Parameters:
+number
+(string)
+required
+Phone number
+
+Example Request:
+
+curl -X POST "https://www.breach.rip/api/intelbase/phone" \
+  -H "Content-Type: application/json" \
+  -H "X-API-Key: YOUR_API_KEY" \
+  -d '{"number": "value"}'
+Response Format:
+{
+  "success": true,
+  "data": {
+    // Response data varies by endpoint
+  },
+  "timestamp": "2025-01-20T12:00:00.000Z"
+}
+Email Check
+Check email validity and detect disposable addresses
+
+POST
+https://www.breach.rip/api/intelbase/email/check
+Parameters:
+email
+(string)
+required
+Email address
+
+Example Request:
+
+curl -X POST "https://www.breach.rip/api/intelbase/email/check" \
+  -H "Content-Type: application/json" \
+  -H "X-API-Key: YOUR_API_KEY" \
+  -d '{"email": "value"}'
+Response Format:
+{
+  "success": true,
+  "data": {
+    // Response data varies by endpoint
+  },
+  "timestamp": "2025-01-20T12:00:00.000Z"
+}
+IP Lookup
+IP address geolocation and ISP information
+
+POST
+https://www.breach.rip/api/intelbase/ip/lookup
+Parameters:
+ip
+(string)
+required
+IP address
+
+Example Request:
+
+curl -X POST "https://www.breach.rip/api/intelbase/ip/lookup" \
+  -H "Content-Type: application/json" \
+  -H "X-API-Key: YOUR_API_KEY" \
+  -d '{"ip": "value"}'
+Response Format:
+{
+  "success": true,
+  "data": {
+    // Response data varies by endpoint
+  },
+  "timestamp": "2025-01-20T12:00:00.000Z"
+}
+GitHub Lookup
+Find GitHub user emails from commits and events
+
+POST
+https://www.breach.rip/api/intelbase/github
+Parameters:
+username
+(string)
+required
+GitHub username
+
+Example Request:
+
+curl -X POST "https://www.breach.rip/api/intelbase/github" \
+  -H "Content-Type: application/json" \
+  -H "X-API-Key: YOUR_API_KEY" \
+  -d '{"username": "value"}'
+Response Format:
+{
+  "success": true,
+  "data": {
+    // Response data varies by endpoint
+  },
+  "timestamp": "2025-01-20T12:00:00.000Z"
+}
+TikTok Lookup
+Get TikTok user information
+
+POST
+https://www.breach.rip/api/intelbase/tiktok
+Parameters:
+username
+(string)
+required
+TikTok username
+
+Example Request:
+
+curl -X POST "https://www.breach.rip/api/intelbase/tiktok" \
+  -H "Content-Type: application/json" \
+  -H "X-API-Key: YOUR_API_KEY" \
+  -d '{"username": "value"}'
+Response Format:
+{
+  "success": true,
+  "data": {
+    // Response data varies by endpoint
+  },
+  "timestamp": "2025-01-20T12:00:00.000Z"
+}
+Discord Lookup
+Lookup Discord ID to IP address
+
+POST
+https://www.breach.rip/api/intelbase/discord/lookup
+Parameters:
+discord_id
+(string)
+required
+Discord ID
+
+Example Request:
+
+curl -X POST "https://www.breach.rip/api/intelbase/discord/lookup" \
+  -H "Content-Type: application/json" \
+  -H "X-API-Key: YOUR_API_KEY" \
+  -d '{"discord_id": "value"}'
+Response Format:
+{
+  "success": true,
+  "data": {
+    // Response data varies by endpoint
+  },
+  "timestamp": "2025-01-20T12:00:00.000Z"
+}
+Minecraft Lookup
+Get Minecraft user profile information
+
+POST
+https://www.breach.rip/api/intelbase/minecraft
+Parameters:
+username
+(string)
+required
+Minecraft username
+
+Example Request:
+
+curl -X POST "https://www.breach.rip/api/intelbase/minecraft" \
+  -H "Content-Type: application/json" \
+  -H "X-API-Key: YOUR_API_KEY" \
+  -d '{"username": "value"}'
+Response Format:
+{
+  "success": true,
+  "data": {
+    // Response data varies by endpoint
+  },
+  "timestamp": "2025-01-20T12:00:00.000Z"
+}
+Roblox Lookup
+Find Roblox profiles
+
+POST
+https://www.breach.rip/api/intelbase/roblox
+Parameters:
+query
+(string)
+required
+Username or Discord ID
+
+lookup_type
+(string)
+required
+username or discord-id
+
+Example Request:
+
+curl -X POST "https://www.breach.rip/api/intelbase/roblox" \
+  -H "Content-Type: application/json" \
+  -H "X-API-Key: YOUR_API_KEY" \
+  -d '{"query": "value", "lookup_type": "value"}'
+Response Format:
+{
+  "success": true,
+  "data": {
+    // Response data varies by endpoint
+  },
+  "timestamp": "2025-01-20T12:00:00.000Z"
+}
+Doxbin Lookup
+Search multiple breached databases (Doxbin, Vilebin, Leakbin)
+
+POST
+https://www.breach.rip/api/intelbase/doxbin/lookup
+Parameters:
+query
+(string)
+required
+Search query
+
+Example Request:
+
+curl -X POST "https://www.breach.rip/api/intelbase/doxbin/lookup" \
+  -H "Content-Type: application/json" \
+  -H "X-API-Key: YOUR_API_KEY" \
+  -d '{"query": "value"}'
+Response Format:
+{
+  "success": true,
+  "data": {
+    // Response data varies by endpoint
+  },
+  "timestamp": "2025-01-20T12:00:00.000Z"
+}
+BMW Search
+Search BMW vehicle owner database
+
+POST
+https://www.breach.rip/api/intelbase/bmw/search
+Parameters:
+search_term
+(string)
+required
+Search term
+
+search_type
+(string)
+required
+chassis, regno, name, or mobile
+
+Example Request:
+
+curl -X POST "https://www.breach.rip/api/intelbase/bmw/search" \
+  -H "Content-Type: application/json" \
+  -H "X-API-Key: YOUR_API_KEY" \
+  -d '{"search_term": "value", "search_type": "value"}'
+Response Format:
+{
+  "success": true,
+  "data": {
+    // Response data varies by endpoint
+  },
+  "timestamp": "2025-01-20T12:00:00.000Z"
+}
+NPD Search
+Advanced NPD search with flexible field combinations via IntelBase. At least one field is required. Returns detailed personal records including full names, contact information, and addresses.
+
+Supports partial matching. Combine multiple fields for more accurate results. Email field can be used alone or with name fields for cross-referencing.
+
+POST
+https://www.breach.rip/api/intelbase/npd/search
+Parameters:
+first_name
+(string)
+First name
+
+last_name
+(string)
+Last name
+
+email
+(string)
+Email address
+
+Example Request:
+
+curl -X POST "https://www.breach.rip/api/intelbase/npd/search" \
+  -H "Content-Type: application/json" \
+  -H "X-API-Key: YOUR_API_KEY" \
+  -d '{"first_name": "value", "last_name": "value", "email": "value"}'
+Response Format:
+{
+  "success": true,
+  "data": {
+    "results": [
+      {
+        "first_name": "John",
+        "middle_name": "A",
+        "last_name": "Doe",
+        "email": "john.doe@example.com",
+        "phone": "+1-555-123-4567",
+        "street": "123 Main St",
+        "city": "New York",
+        "state": "NY",
+        "zip": "10001",
+        "dob": "1980-05-15",
+        "ssn": "***-**-1234"
+      }
+      // ... more results
+    ],
+    "count": 25,
+    "query": {
+      "first_name": "John",
+      "last_name": "Doe"
+    }
+  },
+  "timestamp": "2026-01-02T12:00:00.000Z"
+}
+Reddit Lookup
+Get Reddit user information
+
+POST
+https://www.breach.rip/api/intelbase/reddit
+Parameters:
+username
+(string)
+required
+Reddit username
+
+Example Request:
+
+curl -X POST "https://www.breach.rip/api/intelbase/reddit" \
+  -H "Content-Type: application/json" \
+  -H "X-API-Key: YOUR_API_KEY" \
+  -d '{"username": "value"}'
+Response Format:
+{
+  "success": true,
+  "data": {
+    // Response data varies by endpoint
+  },
+  "timestamp": "2025-01-20T12:00:00.000Z"
+}
+VIN Decoder
+Decode Vehicle Identification Number
+
+POST
+https://www.breach.rip/api/intelbase/vin
+Parameters:
+vin
+(string)
+required
+VIN number
+
+Example Request:
+
+curl -X POST "https://www.breach.rip/api/intelbase/vin" \
+  -H "Content-Type: application/json" \
+  -H "X-API-Key: YOUR_API_KEY" \
+  -d '{"vin": "value"}'
+Response Format:
+{
+  "success": true,
+  "data": {
+    // Response data varies by endpoint
+  },
+  "timestamp": "2025-01-20T12:00:00.000Z"
+}
+HackCheck
+HackCheck database search
+
+POST
+https://www.breach.rip/api/intelbase/hackcheck
+Parameters:
+search_type
+(string)
+required
+email, username, or ip
+
+term
+(string)
+required
+Search term
+
+Example Request:
+
+curl -X POST "https://www.breach.rip/api/intelbase/hackcheck" \
+  -H "Content-Type: application/json" \
+  -H "X-API-Key: YOUR_API_KEY" \
+  -d '{"search_type": "value", "term": "value"}'
+Response Format:
+{
+  "success": true,
+  "data": {
+    // Response data varies by endpoint
+  },
+  "timestamp": "2025-01-20T12:00:00.000Z"
+}
+Unified Search
+Query all databases simultaneously
+
+POST
+https://www.breach.rip/api/intelbase/unified
+Parameters:
+search_type
+(string)
+required
+email, username, ip, phone
+
+query
+(string)
+required
+Search query
+
+Example Request:
+
+curl -X POST "https://www.breach.rip/api/intelbase/unified" \
+  -H "Content-Type: application/json" \
+  -H "X-API-Key: YOUR_API_KEY" \
+  -d '{"search_type": "value", "query": "value"}'
+Response Format:
+{
+  "success": true,
+  "data": {
+    // Response data varies by endpoint
+  },
+  "timestamp": "2025-01-20T12:00:00.000Z"
+}
+LeakOSINT
+Advanced breach database search
+
+POST
+https://www.breach.rip/api/intelbase/leakosint
+Parameters:
+query
+(string)
+required
+Search query
+
+Example Request:
+
+curl -X POST "https://www.breach.rip/api/intelbase/leakosint" \
+  -H "Content-Type: application/json" \
+  -H "X-API-Key: YOUR_API_KEY" \
+  -d '{"query": "value"}'
+Response Format:
+{
+  "success": true,
+  "data": {
+    // Response data varies by endpoint
+  },
+  "timestamp": "2025-01-20T12:00:00.000Z"
+}
+BreachVIP
+Professional breach data lookup
+
+POST
+https://www.breach.rip/api/intelbase/breachvip
+Parameters:
+term
+(string)
+required
+Search term
+
+fields
+(array)
+required
+Array of 1-4 fields: email, password, username, ip
+
+Example Request:
+
+curl -X POST "https://www.breach.rip/api/intelbase/breachvip" \
+  -H "Content-Type: application/json" \
+  -H "X-API-Key: YOUR_API_KEY" \
+  -d '{"term": "value", "fields": "value"}'
+Response Format:
+{
+  "success": true,
+  "data": {
+    // Response data varies by endpoint
+  },
+  "timestamp": "2025-01-20T12:00:00.000Z"
+}
+
+
+Search Stealer Logs
+Search across stealer log databases for compromised credentials
+
+GET
+https://www.breach.rip/api/oathnet/search-stealer
+Parameters:
+q
+(string)
+required
+Search query
+
+search_id
+(string)
+Session search ID
+
+Example Request:
+
+curl -X GET "https://www.breach.rip/api/oathnet/search-stealer?q=value&search_id=value" \
+  -H "X-API-Key: YOUR_API_KEY"
+Response Format:
+{
+  "success": true,
+  "data": {
+    // Response data varies by endpoint
+  },
+  "timestamp": "2025-01-20T12:00:00.000Z"
+}
+Search Breaches
+Search breach databases for accounts and credentials
+
+GET
+https://www.breach.rip/api/oathnet/search-breach
+Parameters:
+q
+(string)
+required
+Search query
+
+search_id
+(string)
+Session search ID
+
+Example Request:
+
+curl -X GET "https://www.breach.rip/api/oathnet/search-breach?q=value&search_id=value" \
+  -H "X-API-Key: YOUR_API_KEY"
+Response Format:
+{
+  "success": true,
+  "data": {
+    // Response data varies by endpoint
+  },
+  "timestamp": "2025-01-20T12:00:00.000Z"
+}
+Extract Subdomains
+Extract all subdomains for a given domain with optional alive check
+
+GET
+https://www.breach.rip/api/oathnet/extract-subdomain
+Parameters:
+domain
+(string)
+required
+Domain name
+
+alive
+(boolean)
+Filter only alive subdomains
+
+search_id
+(string)
+Session search ID
+
+Example Request:
+
+curl -X GET "https://www.breach.rip/api/oathnet/extract-subdomain?domain=value&alive=value&search_id=value" \
+  -H "X-API-Key: YOUR_API_KEY"
+Response Format:
+{
+  "success": true,
+  "data": {
+    // Response data varies by endpoint
+  },
+  "timestamp": "2025-01-20T12:00:00.000Z"
+}
+IP Information
+Comprehensive IP geolocation, network, and threat intelligence
+
+GET
+https://www.breach.rip/api/oathnet/ip-info
+Parameters:
+ip
+(string)
+required
+IP address
+
+search_id
+(string)
+Session search ID
+
+Example Request:
+
+curl -X GET "https://www.breach.rip/api/oathnet/ip-info?ip=value&search_id=value" \
+  -H "X-API-Key: YOUR_API_KEY"
+Response Format:
+{
+  "success": true,
+  "data": {
+    // Response data varies by endpoint
+  },
+  "timestamp": "2025-01-20T12:00:00.000Z"
+}
+Holehe Email Check
+Check email registration across 120+ platforms and services
+
+GET
+https://www.breach.rip/api/oathnet/holehe
+Parameters:
+email
+(string)
+required
+Email address
+
+search_id
+(string)
+Session search ID
+
+Example Request:
+
+curl -X GET "https://www.breach.rip/api/oathnet/holehe?email=value&search_id=value" \
+  -H "X-API-Key: YOUR_API_KEY"
+Response Format:
+{
+  "success": true,
+  "data": {
+    // Response data varies by endpoint
+  },
+  "timestamp": "2025-01-20T12:00:00.000Z"
+}
+GHunt Google Lookup
+Google account OSINT including profile, calendar, and activity data
+
+GET
+https://www.breach.rip/api/oathnet/ghunt
+Parameters:
+email
+(string)
+required
+Email address
+
+search_id
+(string)
+Session search ID
+
+Example Request:
+
+curl -X GET "https://www.breach.rip/api/oathnet/ghunt?email=value&search_id=value" \
+  -H "X-API-Key: YOUR_API_KEY"
+Response Format:
+{
+  "success": true,
+  "data": {
+    // Response data varies by endpoint
+  },
+  "timestamp": "2025-01-20T12:00:00.000Z"
+}
+Roblox User Info
+Lookup Roblox user profile, statistics, and linked accounts
+
+Provide either username or user_id
+
+GET
+https://www.breach.rip/api/oathnet/roblox-userinfo
+Parameters:
+username
+(string)
+Roblox username
+
+user_id
+(string)
+Roblox user ID
+
+search_id
+(string)
+Session search ID
+
+Example Request:
+
+curl -X GET "https://www.breach.rip/api/oathnet/roblox-userinfo?username=value&user_id=value&search_id=value" \
+  -H "X-API-Key: YOUR_API_KEY"
+Response Format:
+{
+  "success": true,
+  "data": {
+    // Response data varies by endpoint
+  },
+  "timestamp": "2025-01-20T12:00:00.000Z"
+}
+Discord to Roblox
+Find linked Roblox accounts from Discord ID
+
+GET
+https://www.breach.rip/api/oathnet/discord-to-roblox
+Parameters:
+discord_id
+(string)
+required
+Discord ID
+
+search_id
+(string)
+Session search ID
+
+Example Request:
+
+curl -X GET "https://www.breach.rip/api/oathnet/discord-to-roblox?discord_id=value&search_id=value" \
+  -H "X-API-Key: YOUR_API_KEY"
+Response Format:
+{
+  "success": true,
+  "data": {
+    // Response data varies by endpoint
+  },
+  "timestamp": "2025-01-20T12:00:00.000Z"
+}
+Steam User Info
+Steam profile information, games library, and account statistics
+
+GET
+https://www.breach.rip/api/oathnet/steam
+Parameters:
+steam_id
+(string)
+required
+Steam ID or profile URL
+
+search_id
+(string)
+Session search ID
+
+Example Request:
+
+curl -X GET "https://www.breach.rip/api/oathnet/steam?steam_id=value&search_id=value" \
+  -H "X-API-Key: YOUR_API_KEY"
+Response Format:
+{
+  "success": true,
+  "data": {
+    // Response data varies by endpoint
+  },
+  "timestamp": "2025-01-20T12:00:00.000Z"
+}
+Xbox User Info
+Xbox Live profile lookup with gamertag and achievements
+
+GET
+https://www.breach.rip/api/oathnet/xbox
+Parameters:
+xbl_id
+(string)
+required
+Xbox Live Gamertag or XUID
+
+search_id
+(string)
+Session search ID
+
+Example Request:
+
+curl -X GET "https://www.breach.rip/api/oathnet/xbox?xbl_id=value&search_id=value" \
+  -H "X-API-Key: YOUR_API_KEY"
+Response Format:
+{
+  "success": true,
+  "data": {
+    // Response data varies by endpoint
+  },
+  "timestamp": "2025-01-20T12:00:00.000Z"
+}
+Minecraft History
+Minecraft username change history and account details
+
+GET
+https://www.breach.rip/api/oathnet/mc-history
+Parameters:
+username
+(string)
+required
+Minecraft username
+
+search_id
+(string)
+Session search ID
+
+Example Request:
+
+curl -X GET "https://www.breach.rip/api/oathnet/mc-history?username=value&search_id=value" \
+  -H "X-API-Key: YOUR_API_KEY"
+Response Format:
+{
+  "success": true,
+  "data": {
+    // Response data varies by endpoint
+  },
+  "timestamp": "2025-01-20T12:00:00.000Z"
+}
+Discord User Info
+Discord user profile, avatar, banner, and account creation date
+
+GET
+https://www.breach.rip/api/oathnet/discord-userinfo
+Parameters:
+discord_id
+(string)
+required
+Discord ID
+
+search_id
+(string)
+Session search ID
+
+Example Request:
+
+curl -X GET "https://www.breach.rip/api/oathnet/discord-userinfo?discord_id=value&search_id=value" \
+  -H "X-API-Key: YOUR_API_KEY"
+Response Format:
+{
+  "success": true,
+  "data": {
+    // Response data varies by endpoint
+  },
+  "timestamp": "2025-01-20T12:00:00.000Z"
+}
+Discord Username History
+Track Discord username and discriminator change history
+
+GET
+https://www.breach.rip/api/oathnet/discord-username-history
+Parameters:
+discord_id
+(string)
+required
+Discord ID
+
+search_id
+(string)
+Session search ID
+
+Example Request:
+
+curl -X GET "https://www.breach.rip/api/oathnet/discord-username-history?discord_id=value&search_id=value" \
+  -H "X-API-Key: YOUR_API_KEY"
+Response Format:
+{
+  "success": true,
+  "data": {
+    // Response data varies by endpoint
+  },
+  "timestamp": "2025-01-20T12:00:00.000Z"
+}
+
+
+Universal Search
+Search top 5 modules simultaneously with auto-detection. Queries Snusbase, KeyScore, LeakCheck, and HackCheck in parallel.
+
+Returns aggregated results from multiple breach intelligence sources. Automatically detects query type (email/username/IP).
+
+POST
+https://www.breach.rip/api/breachlookup/universal
+Parameters:
+query
+(string)
+required
+Email, Username, or IP Address
+
+Example Request:
+
+curl -X POST "https://www.breach.rip/api/breachlookup/universal" \
+  -H "Content-Type: application/json" \
+  -H "X-API-Key: YOUR_API_KEY" \
+  -d '{"query": "value"}'
+Response Format:
+{
+  "success": true,
+  "data": {
+    // Response data varies by endpoint
+  },
+  "timestamp": "2025-01-20T12:00:00.000Z"
+}
+HudsonRock Intelligence
+Access infection data and stealer logs from compromised computers. Shows malware paths, credentials, and affected services.
+
+Returns detailed stealer log information including computer names, operating systems, IP addresses, and compromised credentials.
+
+POST
+https://www.breach.rip/api/breachlookup/hudsonrock
+Parameters:
+query
+(string)
+required
+Email or domain
+
+hudsonrock_mode
+(string)
+Search mode: auto, domain, or email (default: auto)
+
+Example Request:
+
+curl -X POST "https://www.breach.rip/api/breachlookup/hudsonrock" \
+  -H "Content-Type: application/json" \
+  -H "X-API-Key: YOUR_API_KEY" \
+  -d '{"query": "value", "hudsonrock_mode": "value"}'
+Response Format:
+{
+  "success": true,
+  "data": {
+    // Response data varies by endpoint
+  },
+  "timestamp": "2025-01-20T12:00:00.000Z"
+}
+🔍 IDLeakCheck NPD Search (Recommended)
+🔥 MOST COMPREHENSIVE NPD SEARCH - Access the complete National Public Data breach database through IDLeakCheck. Search by any combination of personal identifiers including names, contact info, addresses, DOB, and SSN. Flexible field matching with intelligent normalization and partial matching support.
+
+⚡ SEARCH TIPS:
+• At least ONE field is required (combine multiple fields for better accuracy)
+• More specific queries = more accurate results
+• Phone numbers auto-format: 5551234567, (555)123-4567, 555-123-4567 all work
+• SSN auto-normalizes: 123456789 converts to 123-45-6789
+• State accepts: 'NY', 'New York', 'ny' - all equivalent
+• Partial name matching: 'John' finds 'Jonathan', 'Johnny', etc.
+• Email domain search: Use just domain like '@gmail.com' to find all Gmail users
+
+📊 RESPONSE INCLUDES:
+• Complete personal profiles with all available fields
+• Multiple records per person if found in different breaches
+• Source database information for each record
+• Match confidence scoring based on fields provided
+• Associated addresses, phones, and email variations
+
+🎯 USE CASES:
+• Skip tracing and people search
+• Identity verification and fraud prevention
+• Background research and due diligence
+• Contact information discovery
+• Address history lookup
+• Family member connections
+
+⚠️ PRIVACY NOTE: This searches publicly disclosed breach data from the NPD incident. Use responsibly and legally.
+
+POST
+https://www.breach.rip/api/breachlookup/idleakcheck/npd
+Parameters:
+first_name
+(string)
+First name - supports partial matching
+
+middle_name
+(string)
+Middle name or initial (optional for refinement)
+
+last_name
+(string)
+Last name - supports partial matching
+
+email
+(string)
+Email address - exact or domain match
+
+phone
+(string)
+Phone number - any format accepted (auto-normalized)
+
+street
+(string)
+Street address - partial matching enabled
+
+city
+(string)
+City name - case insensitive
+
+state
+(string)
+State - accepts both 2-letter codes (NY) or full names (New York)
+
+zip
+(string)
+ZIP code - 5 or 9 digit format
+
+dob
+(string)
+Date of birth - format: YYYY-MM-DD (e.g., 1980-05-15)
+
+ssn
+(string)
+Social Security Number - any format (automatically normalized to XXX-XX-XXXX)
+
+Example Request:
+
+# Example 1: Search by name and state
+curl -X POST "https://www.breach.rip/api/breachlookup/idleakcheck/npd" \
+  -H "Content-Type: application/json" \
+  -H "X-API-Key: YOUR_API_KEY" \
+  -d '{
+    "first_name": "John",
+    "last_name": "Smith",
+    "state": "CA"
+  }'
+
+# Example 2: Search by email only
+curl -X POST "https://www.breach.rip/api/breachlookup/idleakcheck/npd" \
+  -H "Content-Type: application/json" \
+  -H "X-API-Key: YOUR_API_KEY" \
+  -d '{
+    "email": "john.smith@email.com"
+  }'
+
+# Example 3: Comprehensive search with multiple fields
+curl -X POST "https://www.breach.rip/api/breachlookup/idleakcheck/npd" \
+  -H "Content-Type: application/json" \
+  -H "X-API-Key: YOUR_API_KEY" \
+  -d '{
+    "first_name": "John",
+    "middle_name": "A",
+    "last_name": "Smith",
+    "city": "Los Angeles",
+    "state": "CA",
+    "phone": "5551234567",
+    "dob": "1980-05-15"
+  }'
+
+# Example 4: Search by phone number (any format works)
+curl -X POST "https://www.breach.rip/api/breachlookup/idleakcheck/npd" \
+  -H "Content-Type: application/json" \
+  -H "X-API-Key: YOUR_API_KEY" \
+  -d '{
+    "phone": "(555) 123-4567"
+  }'
+Response Format:
+{
+  "success": true,
+  "data": {
+    "service": "IDLeakCheck NPD Search",
+    "provider": "IDLeakCheck",
+    "database": "National Public Data (NPD)",
+    "query_parameters": {
+      "first_name": "John",
+      "last_name": "Smith",
+      "state": "CA",
+      "city": "Los Angeles"
+    },
+    "results": [
+      {
+        "record_id": "npd_001234567",
+        "match_score": 95,
+        "first_name": "John",
+        "middle_name": "Allen",
+        "last_name": "Smith",
+        "email": "johnsmith@email.com",
+        "email_secondary": "j.a.smith@gmail.com",
+        "phone": "555-123-4567",
+        "phone_secondary": "555-987-1234",
+        "street": "456 Oak Avenue Apt 2B",
+        "city": "Los Angeles",
+        "state": "CA",
+        "zip": "90001",
+        "dob": "1975-03-20",
+        "age": 48,
+        "ssn": "123-45-6789",
+        "previous_addresses": [
+          {
+            "street": "789 Elm Street",
+            "city": "San Diego",
+            "state": "CA",
+            "zip": "92101",
+            "years": "2015-2020"
+          }
+        ],
+        "relatives": [
+          {
+            "name": "Mary Smith",
+            "relationship": "Spouse",
+            "phone": "555-123-4568"
+          },
+          {
+            "name": "Robert Smith",
+            "relationship": "Son"
+          }
+        ],
+        "breach_source": "NPD_2024_BREACH",
+        "last_updated": "2024-08-15"
+      },
+      {
+        "record_id": "npd_001234568",
+        "match_score": 88,
+        "first_name": "John",
+        "middle_name": "B",
+        "last_name": "Smith",
+        "email": "j.smith@company.com",
+        "phone": "555-987-6543",
+        "street": "789 Pine Street",
+        "city": "Los Angeles",
+        "state": "CA",
+        "zip": "90015",
+        "dob": "1982-11-08",
+        "age": 41,
+        "breach_source": "NPD_2023_SUPPLEMENT",
+        "last_updated": "2023-12-10"
+      },
+      {
+        "record_id": "npd_001234569",
+        "match_score": 76,
+        "first_name": "Jonathan",
+        "middle_name": "C",
+        "last_name": "Smith",
+        "email": "jon.smith@domain.com",
+        "phone": "555-456-7890",
+        "street": "123 Main Street",
+        "city": "Los Angeles",
+        "state": "CA",
+        "zip": "90024",
+        "dob": "1980-07-22",
+        "age": 43,
+        "ssn": "987-65-4321",
+        "breach_source": "NPD_2024_BREACH",
+        "last_updated": "2024-08-15"
+      }
+    ],
+    "total_records": 3,
+    "matched_fields": ["first_name", "last_name", "city", "state"],
+    "search_metadata": {
+      "execution_time_ms": 842,
+      "records_scanned": 2879345612,
+      "match_threshold": 70,
+      "partial_matches_included": true
+    }
+  },
+  "timestamp": "2026-01-02T12:25:47.382Z"
+}
+IDLeakCheck USA Consumer
+USA Consumer data search. Currently disabled by provider.
+
+⚠️ Currently unavailable - Provider has temporarily disabled this dataset.
+
+POST
+https://www.breach.rip/api/breachlookup/idleakcheck/usa
+Parameters:
+first_name
+(string)
+First name
+
+middle_name
+(string)
+Middle name or initial
+
+last_name
+(string)
+Last name
+
+email
+(string)
+Email address
+
+phone
+(string)
+Phone number
+
+street
+(string)
+Street address
+
+city
+(string)
+City name
+
+state
+(string)
+State
+
+zip
+(string)
+ZIP code
+
+dob
+(string)
+Date of birth (YYYY-MM-DD)
+
+ssn
+(string)
+Social Security Number
+
+Example Request:
+
+curl -X POST "https://www.breach.rip/api/breachlookup/idleakcheck/usa" \
+  -H "Content-Type: application/json" \
+  -H "X-API-Key: YOUR_API_KEY" \
+  -d '{"first_name": "value", "middle_name": "value", "last_name": "value", "email": "value", "phone": "value", "street": "value", "city": "value", "state": "value", "zip": "value", "dob": "value", "ssn": "value"}'
+Response Format:
+{
+  "success": true,
+  "data": {
+    // Response data varies by endpoint
+  },
+  "timestamp": "2025-01-20T12:00:00.000Z"
+}
+OSINTCat Engine
+Deep email and phone reconnaissance through OSINTCat intelligence network.
+
+Auto-detects query type or specify mode manually for targeted searches.
+
+POST
+https://www.breach.rip/api/breachlookup/osintcat
+Parameters:
+query
+(string)
+required
+Email or phone number
+
+osintcat_mode
+(string)
+Search mode: auto, email, or phone (default: auto)
+
+Example Request:
+
+curl -X POST "https://www.breach.rip/api/breachlookup/osintcat" \
+  -H "Content-Type: application/json" \
+  -H "X-API-Key: YOUR_API_KEY" \
+  -d '{"query": "value", "osintcat_mode": "value"}'
+Response Format:
+{
+  "success": true,
+  "data": {
+    // Response data varies by endpoint
+  },
+  "timestamp": "2025-01-20T12:00:00.000Z"
+}
+LeakCheck Global
+Search compromised credentials in LeakCheck's global breach database. Returns passwords, sources, and breach dates.
+
+One of the most comprehensive breach databases with detailed source information and breach metadata.
+
+POST
+https://www.breach.rip/api/breachlookup/leakcheck
+Parameters:
+query
+(string)
+required
+Email or username
+
+leakcheck_mode
+(string)
+Search mode: auto, email, or username (default: auto)
+
+Example Request:
+
+curl -X POST "https://www.breach.rip/api/breachlookup/leakcheck" \
+  -H "Content-Type: application/json" \
+  -H "X-API-Key: YOUR_API_KEY" \
+  -d '{"query": "value", "leakcheck_mode": "value"}'
+Response Format:
+{
+  "success": true,
+  "data": {
+    // Response data varies by endpoint
+  },
+  "timestamp": "2025-01-20T12:00:00.000Z"
+}
+Snusbase Search
+Search Snusbase database. Currently disabled due to provider issues.
+
+⚠️ Provider issue - temporarily unavailable. The provider is experiencing rate limiting on their end.
+
+POST
+https://www.breach.rip/api/breachlookup/snusbase
+Parameters:
+query
+(string)
+required
+Email, Username, Name, or IP
+
+Example Request:
+
+curl -X POST "https://www.breach.rip/api/breachlookup/snusbase" \
+  -H "Content-Type: application/json" \
+  -H "X-API-Key: YOUR_API_KEY" \
+  -d '{"query": "value"}'
+Response Format:
+{
+  "success": true,
+  "data": {
+    // Response data varies by endpoint
+  },
+  "timestamp": "2025-01-20T12:00:00.000Z"
+}
+
+
+
+
+Database Search
+Search across 12B+ records in the Stealerlo.gs stealerlog record database. Supports multi-term search, wildcards, regex, operators, date filtering, and pagination.
+
+POST
+https://www.breach.rip/api/stealerlogs/search
+Parameters:
+query
+(string)
+required
+Search query (email, username, password, domain, phone, IP, name, UUID)
+
+type
+(string)
+required
+Search type: email, username, password, domain/site/website, phone, ip, name, uuid
+
+limit
+(number)
+Result limit (default: 100)
+
+Example Request:
+
+curl -X POST "https://www.breach.rip/api/stealerlogs/search" \
+  -H "Content-Type: application/json" \
+  -H "X-API-Key: YOUR_API_KEY" \
+  -d '{"query": "value", "type": "value", "limit": "value"}'
+Response Format:
+{
+  "success": true,
+  "data": {
+    // Response data varies by endpoint
+  },
+  "timestamp": "2025-01-20T12:00:00.000Z"
+}
+IP Geolocation
+Get geolocation and network information for IP addresses. Batch lookup up to 100 IPs per request.
+
+POST
+https://www.breach.rip/api/stealerlogs/iplookup
+Parameters:
+terms
+(array)
+required
+Array of IP addresses - up to 100 IPs. Private IPs are rejected.
+
+Example Request:
+
+curl -X POST "https://www.breach.rip/api/stealerlogs/iplookup" \
+  -H "Content-Type: application/json" \
+  -H "X-API-Key: YOUR_API_KEY" \
+  -d '{"terms": "value"}'
+Response Format:
+{
+  "success": true,
+  "data": {
+    // Response data varies by endpoint
+  },
+  "timestamp": "2025-01-20T12:00:00.000Z"
+}
+Phone Lookup
+Get detailed phone information including caller name, carrier, location, and associated notes. Batch lookup up to 10 numbers.
+
+POST
+https://www.breach.rip/api/stealerlogs/phonelookup
+Parameters:
+terms
+(array)
+required
+Array of phone numbers with optional country code - up to 10 numbers
+
+Example Request:
+
+curl -X POST "https://www.breach.rip/api/stealerlogs/phonelookup" \
+  -H "Content-Type: application/json" \
+  -H "X-API-Key: YOUR_API_KEY" \
+  -d '{"terms": "value"}'
+Response Format:
+{
+  "success": true,
+  "data": {
+    // Response data varies by endpoint
+  },
+  "timestamp": "2025-01-20T12:00:00.000Z"
+}
+Machine Information
+Retrieve comprehensive system information for a machine by UUID including hardware specs, OS details, network info, and installed software.
+
+GET
+https://www.breach.rip/api/stealerlogs/machineinfo
+Parameters:
+uuid
+(string)
+required
+Machine UUID
+
+Example Request:
+
+curl -X GET "https://www.breach.rip/api/stealerlogs/machineinfo?uuid=value" \
+  -H "X-API-Key: YOUR_API_KEY"
+Response Format:
+{
+  "success": true,
+  "data": {
+    // Response data varies by endpoint
+  },
+  "timestamp": "2025-01-20T12:00:00.000Z"
+}
+
+Email Intelligence
+Search for individuals by email with results including names, addresses, phones, and associates
+
+POST
+https://www.breach.rip/api/indicia/intelligence/email
+Parameters:
+query
+(string)
+required
+Email address to search
+
+Example Request:
+
+curl -X POST "https://www.breach.rip/api/indicia/intelligence/email" \
+  -H "Content-Type: application/json" \
+  -H "X-API-Key: YOUR_API_KEY" \
+  -d '{"query": "value"}'
+Response Format:
+{
+  "success": true,
+  "data": {
+    // Response data varies by endpoint
+  },
+  "timestamp": "2025-01-20T12:00:00.000Z"
+}
+Gmail Account Lookup
+Fetch Gmail account information using GHunt library including Maps photos, reviews, Calendar events, and Play Games profile
+
+POST
+https://www.breach.rip/api/indicia/intelligence/gmail
+Parameters:
+email
+(string)
+required
+Gmail address
+
+Example Request:
+
+curl -X POST "https://www.breach.rip/api/indicia/intelligence/gmail" \
+  -H "Content-Type: application/json" \
+  -H "X-API-Key: YOUR_API_KEY" \
+  -d '{"email": "value"}'
+Response Format:
+{
+  "success": true,
+  "data": {
+    // Response data varies by endpoint
+  },
+  "timestamp": "2025-01-20T12:00:00.000Z"
+}
+Breach Database
+Search breach databases for compromised credentials and personal information
+
+POST
+https://www.breach.rip/api/indicia/intelligence/leakcheck
+Parameters:
+query
+(string)
+required
+Search query
+
+type
+(string)
+Search type: auto, domain, email, hash, keyword (default: auto)
+
+Example Request:
+
+curl -X POST "https://www.breach.rip/api/indicia/intelligence/leakcheck" \
+  -H "Content-Type: application/json" \
+  -H "X-API-Key: YOUR_API_KEY" \
+  -d '{"query": "value", "type": "value"}'
+Response Format:
+{
+  "success": true,
+  "data": {
+    // Response data varies by endpoint
+  },
+  "timestamp": "2025-01-20T12:00:00.000Z"
+}
+Person Search
+Search for individuals by name with optional location filters
+
+POST
+https://www.breach.rip/api/indicia/intelligence/person
+Parameters:
+name
+(string)
+required
+Full name or first/last name
+
+city
+(string)
+City filter
+
+state
+(string)
+State filter
+
+Example Request:
+
+curl -X POST "https://www.breach.rip/api/indicia/intelligence/person" \
+  -H "Content-Type: application/json" \
+  -H "X-API-Key: YOUR_API_KEY" \
+  -d '{"name": "value", "city": "value", "state": "value"}'
+Response Format:
+{
+  "success": true,
+  "data": {
+    // Response data varies by endpoint
+  },
+  "timestamp": "2025-01-20T12:00:00.000Z"
+}
+
+Discord Lookup
+Search Discord users for profile info, connected accounts, servers, mod actions, and clan details
+
+POST
+https://www.breach.rip/api/indicia/socials/discord
+Parameters:
+query
+(string)
+required
+Discord user ID
+
+Example Request:
+
+curl -X POST "https://www.breach.rip/api/indicia/socials/discord" \
+  -H "Content-Type: application/json" \
+  -H "X-API-Key: YOUR_API_KEY" \
+  -d '{"query": "value"}'
+Response Format:
+{
+  "success": true,
+  "data": {
+    // Response data varies by endpoint
+  },
+  "timestamp": "2025-01-20T12:00:00.000Z"
+}
+GitHub Lookup
+Search GitHub profiles for user info, commit emails, repositories, and activity statistics
+
+POST
+https://www.breach.rip/api/indicia/socials/github
+Parameters:
+query
+(string)
+required
+GitHub username or email
+
+Example Request:
+
+curl -X POST "https://www.breach.rip/api/indicia/socials/github" \
+  -H "Content-Type: application/json" \
+  -H "X-API-Key: YOUR_API_KEY" \
+  -d '{"query": "value"}'
+Response Format:
+{
+  "success": true,
+  "data": {
+    // Response data varies by endpoint
+  },
+  "timestamp": "2025-01-20T12:00:00.000Z"
+}
+Roblox Lookup
+Lookup Roblox users for profile info, game stats, past usernames, and connected platforms
+
+POST
+https://www.breach.rip/api/indicia/socials/roblox
+Parameters:
+query
+(string)
+required
+Roblox username or user ID
+
+past
+(boolean)
+Include past usernames
+
+Example Request:
+
+curl -X POST "https://www.breach.rip/api/indicia/socials/roblox" \
+  -H "Content-Type: application/json" \
+  -H "X-API-Key: YOUR_API_KEY" \
+  -d '{"query": "value", "past": "value"}'
+Response Format:
+{
+  "success": true,
+  "data": {
+    // Response data varies by endpoint
+  },
+  "timestamp": "2025-01-20T12:00:00.000Z"
+}
+Username Search
+Search for a username across multiple social media and platform sites
+
+POST
+https://www.breach.rip/api/indicia/socials/username
+Parameters:
+query
+(string)
+required
+Username to search
+
+Example Request:
+
+curl -X POST "https://www.breach.rip/api/indicia/socials/username" \
+  -H "Content-Type: application/json" \
+  -H "X-API-Key: YOUR_API_KEY" \
+  -d '{"query": "value"}'
+Response Format:
+{
+  "success": true,
+  "data": {
+    // Response data varies by endpoint
+  },
+  "timestamp": "2025-01-20T12:00:00.000Z"
+}
+
+Xbox Lookup
+Search Xbox user information by gamertag
+
+GET
+https://www.breach.rip/api/xbox/lookup
+Parameters:
+query
+(string)
+required
+Xbox gamertag
+
+Example Request:
+
+curl -X GET "https://www.breach.rip/api/xbox/lookup?query=value" \
+  -H "X-API-Key: YOUR_API_KEY"
+Response Format:
+{
+  "success": true,
+  "data": {
+    // Response data varies by endpoint
+  },
+  "timestamp": "2025-01-20T12:00:00.000Z"
+}
+French DCP
+Search French DCP database (customer records from French sources)
+
+GET
+https://www.breach.rip/api/french-dcp/search
+Parameters:
+q
+(string)
+required
+Search query (email, phone, or name) - minimum 3 characters
+
+term
+(string)
+required
+Search term type: email, phone, or name
+
+limit
+(number)
+Max results (default: 1000, max: 10000)
+
+Example Request:
+
+curl -X GET "https://www.breach.rip/api/french-dcp/search?q=value&term=value&limit=value" \
+  -H "X-API-Key: YOUR_API_KEY"
+Response Format:
+{
+  "success": true,
+  "data": {
+    // Response data varies by endpoint
+  },
+  "timestamp": "2025-01-20T12:00:00.000Z"
+}
+OSINTSnow
+Multi-source OSINT aggregator (Currently Offline)
+
+POST
+https://www.breach.rip/api/osintsnow/search
+Parameters:
+query
+(string)
+required
+Search query
+
+type
+(string)
+required
+email, phone, username, discord, domain, ip, hash, url, reddit, steamid
+
+Example Request:
+
+curl -X POST "https://www.breach.rip/api/osintsnow/search" \
+  -H "Content-Type: application/json" \
+  -H "X-API-Key: YOUR_API_KEY" \
+  -d '{"query": "value", "type": "value"}'
+Response Format:
+{
+  "success": true,
+  "data": {
+    // Response data varies by endpoint
+  },
+  "timestamp": "2025-01-20T12:00:00.000Z"
+}
+Image Geolocation
+Extract geolocation data from image EXIF metadata
+
+POST
+https://www.breach.rip/api/image-geolocation
+Parameters:
+image
+(string)
+required
+Base64 encoded image
+
+Example Request:
+
+curl -X POST "https://www.breach.rip/api/image-geolocation" \
+  -H "Content-Type: application/json" \
+  -H "X-API-Key: YOUR_API_KEY" \
+  -d '{"image": "value"}'
+Response Format:
+{
+  "success": true,
+  "data": {
+    // Response data varies by endpoint
+  },
+  "timestamp": "2025-01-20T12:00:00.000Z"
+}

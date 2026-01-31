@@ -1,5 +1,11 @@
-import { supabase } from '@/lib/auth';
+import { createClient } from '@supabase/supabase-js';
 import { headers } from 'next/headers';
+
+// Create a Supabase client with the service role key to bypass RLS
+const supabaseAdmin = createClient(
+  process.env.NEXT_PUBLIC_SUPABASE_URL!,
+  process.env.SUPABASE_SERVICE_ROLE_KEY!
+);
 
 function verifyAdminToken(token: string): boolean {
   try {
@@ -32,7 +38,7 @@ export async function GET(request: Request) {
     const sortBy = searchParams.get('sortBy') || 'created_at';
     const sortOrder = searchParams.get('sortOrder') || 'desc';
 
-    let query = supabase
+    let query = supabaseAdmin
       .from('users')
       .select(`
         id,
@@ -43,12 +49,8 @@ export async function GET(request: Request) {
         daily_searches_used,
         is_active,
         is_banned,
-        total_referrals,
-        referral_earnings,
-        last_known_ip,
         created_at,
-        referred_by,
-        referral_code
+        api_key
       `, { count: 'exact' });
 
     if (search) {
@@ -111,7 +113,7 @@ export async function PATCH(request: Request) {
       return Response.json({ message: 'User ID and action required' }, { status: 400 });
     }
 
-    const { data: currentUser } = await supabase
+    const { data: currentUser } = await supabaseAdmin
       .from('users')
       .select('*')
       .eq('id', userId)
@@ -166,7 +168,7 @@ export async function PATCH(request: Request) {
     if (Object.keys(updateData).length > 0) {
       updateData.updated_at = new Date().toISOString();
       
-      const { error } = await supabase
+      const { error } = await supabaseAdmin
         .from('users')
         .update(updateData)
         .eq('id', userId);
@@ -177,7 +179,7 @@ export async function PATCH(request: Request) {
       }
     }
 
-    await supabase.from('admin_audit_logs').insert({
+    await supabaseAdmin.from('admin_audit_logs').insert({
       action: auditAction,
       target_type: 'user',
       target_id: userId,

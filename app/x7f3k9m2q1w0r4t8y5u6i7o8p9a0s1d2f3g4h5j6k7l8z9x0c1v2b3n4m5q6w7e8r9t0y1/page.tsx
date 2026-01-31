@@ -84,6 +84,7 @@ interface AdminStats {
   suspiciousActivities: number;
   bannedUsers: number;
   revenue: number;
+  trafficChart: number[];
 }
 
 interface User {
@@ -117,6 +118,9 @@ interface ActivityLog {
   response_status: number;
   response_time_ms: number;
   created_at: string;
+  users?: {
+    username: string;
+  };
 }
 
 interface SuspiciousActivity {
@@ -227,36 +231,49 @@ export default function AdminDashboard() {
   useEffect(() => {
     if (activeTab === 'users' && isAuthenticated) {
       fetchUsers();
+    } else if (activeTab === 'activity' && isAuthenticated) {
+      fetchGlobalActivityLogs();
     }
   }, [activeTab, isAuthenticated, userSearch, userFilter]);
 
+  const fetchGlobalActivityLogs = async () => {
+    try {
+        const token = localStorage.getItem('adminToken');
+        const response = await fetch('/api/admin/activity?limit=100', {
+            headers: { Authorization: `Bearer ${token}` },
+        });
+        if (response.ok) {
+            const data = await response.json();
+            setGlobalActivityLogs(data.logs);
+        }
+    } catch (error) {
+        console.error("Error fetching global logs", error);
+        toast.error("Failed to fetch activity logs");
+    }
+  };
+
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
-    // In a real app, verify with backend. Here just simple check as per existing code structure or simplified for demo
-    // Assuming backend verification for admin password or just token based.
-    // Since there is no /api/admin/login explicit in the file list (maybe I missed it or it uses generic login),
-    // I will assume a hardcoded check or a specific route.
-    // Wait, the previous code had handleLogin but I didn't see the implementation in the snippet.
-    // I'll use a simple fetch to verify or just set token if success.
-    
-    // For now, let's assume a basic check against an env or just allow if it returns a token.
-    // Actually, I should check if there is an admin login route. 
-    // I see `app/api/auth/login/route.ts` but that's for users.
-    // The original file used `localStorage.setItem('adminToken', ...)`
-    
-    // Let's implement a simple mock or use the existing logic if I had it.
-    // I'll just simulate it for now as the user asked to fix the project, and I don't want to break the admin login if it was there.
-    // I'll use a hash or just simple string for now, but ideally it should call an API.
-    
-    if (adminPassword === 'admin123') { // Placeholder or use env
-       const token = btoa(JSON.stringify({ isAdmin: true, timestamp: Date.now() }));
-       localStorage.setItem('adminToken', token);
-       setIsAuthenticated(true);
-       setShowPasswordPrompt(false);
-       fetchAdminData();
-       toast.success('Admin access granted');
-    } else {
-       toast.error('Invalid password');
+    try {
+      const res = await fetch('/api/admin/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ password: adminPassword })
+      });
+      
+      const data = await res.json();
+      
+      if (res.ok && data.success) {
+         localStorage.setItem('adminToken', data.token);
+         setIsAuthenticated(true);
+         setShowPasswordPrompt(false);
+         fetchAdminData();
+         toast.success('Admin access granted');
+      } else {
+         toast.error(data.message || 'Invalid password');
+      }
+    } catch (e) {
+      toast.error('Login failed');
     }
   };
 
@@ -481,16 +498,19 @@ export default function AdminDashboard() {
                   </Select>
                 </div>
                 <div className="h-64 flex items-end justify-between gap-2 px-4 border-b border-l border-zinc-800 relative">
-                  {/* Mock Chart Bars */}
-                  {[35, 45, 30, 60, 75, 50, 45, 80, 70, 65, 55, 40, 30, 45, 50, 60, 75, 85, 90, 80, 70, 60, 50, 40].map((h, i) => (
-                    <div key={i} className="w-full bg-[#ec1313]/20 hover:bg-[#ec1313] transition-colors rounded-t-sm relative group" style={{ height: `${h}%` }}>
+                  {/* Real Traffic Chart */}
+                  {(stats?.trafficChart || new Array(24).fill(0)).map((h, i) => {
+                     const maxVal = Math.max(...(stats?.trafficChart || [10]));
+                     const heightPct = maxVal > 0 ? (h / maxVal) * 80 : 0;
+                     return (
+                    <div key={i} className="w-full bg-[#ec1313]/20 hover:bg-[#ec1313] transition-colors rounded-t-sm relative group" style={{ height: `${Math.max(heightPct, 5)}%` }}>
                       <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 bg-black border border-zinc-800 px-2 py-1 rounded text-xs opacity-0 group-hover:opacity-100 pointer-events-none whitespace-nowrap z-20">
-                        {h * 12} reqs
+                        {h} reqs
                       </div>
                     </div>
-                  ))}
+                  )})}
                 </div>
-                <div className="flex justify-between mt-4 text-xs text-zinc-500 font-bold tracking-widest">
+                <div className="flex justify-between mt-4 text-xs text-zinc-500 font-mono">
                   <span>00:00</span>
                   <span>06:00</span>
                   <span>12:00</span>
@@ -508,7 +528,7 @@ export default function AdminDashboard() {
                   <div>
                     <div className="flex justify-between text-sm mb-2">
                       <span className="text-zinc-400">API Latency</span>
-                      <span className="text-green-500 font-mono">45ms</span>
+                      <span className="text-green-500 font-bold tracking-widest">45ms</span>
                     </div>
                     <div className="h-2 bg-zinc-800 rounded-full overflow-hidden">
                       <div className="h-full bg-green-500 w-[20%]" />
@@ -678,8 +698,71 @@ export default function AdminDashboard() {
           </TabsContent>
           
           <TabsContent value="activity">
-            {/* Activity logs implementation */}
-            <div className="text-center py-8 text-zinc-500">Select "Activity Logs" from the menu to view global logs.</div>
+            <div className="space-y-4">
+              <div className="flex items-center justify-between">
+                 <h2 className="text-xl font-bold flex items-center gap-2">
+                    <Activity className="w-5 h-5 text-red-500" />
+                    Global Activity Monitor
+                 </h2>
+                 <Button variant="outline" size="sm" onClick={fetchGlobalActivityLogs}>
+                    <RefreshCw className="w-4 h-4 mr-2" />
+                    Refresh Logs
+                 </Button>
+              </div>
+
+              <div className="rounded-md border border-zinc-800 bg-zinc-900 overflow-hidden">
+                <Table>
+                  <TableHeader>
+                    <TableRow>
+                      <TableHead>Time</TableHead>
+                      <TableHead>User</TableHead>
+                      <TableHead>Action</TableHead>
+                      <TableHead>Endpoint</TableHead>
+                      <TableHead>Status</TableHead>
+                      <TableHead>IP Address</TableHead>
+                    </TableRow>
+                  </TableHeader>
+                  <TableBody>
+                    {globalActivityLogs.map((log) => (
+                      <TableRow key={log.id} className="hover:bg-zinc-800/50">
+                        <TableCell className="font-mono text-xs text-zinc-400 whitespace-nowrap">
+                           {new Date(log.created_at).toLocaleString()}
+                        </TableCell>
+                        <TableCell>
+                           <div className="flex flex-col">
+                             <span className="font-medium text-sm">{log.users?.username || 'Unknown'}</span>
+                             <span className="text-xs text-zinc-500 font-mono">{log.user_id.substring(0, 8)}...</span>
+                           </div>
+                        </TableCell>
+                        <TableCell>
+                           <Badge variant="outline" className="bg-zinc-950/50">{log.action}</Badge>
+                        </TableCell>
+                        <TableCell className="font-mono text-xs text-zinc-300">
+                           {log.endpoint || '-'}
+                        </TableCell>
+                        <TableCell>
+                           {log.response_status && (
+                             <Badge variant={log.response_status >= 400 ? "destructive" : "secondary"} className={log.response_status < 400 ? "bg-green-900/20 text-green-400 hover:bg-green-900/30" : ""}>
+                               {log.response_status}
+                             </Badge>
+                           )}
+                        </TableCell>
+                        <TableCell className="font-mono text-xs text-zinc-400">
+                           {log.ip_address}
+                        </TableCell>
+                      </TableRow>
+                    ))}
+                    {globalActivityLogs.length === 0 && (
+                      <TableRow>
+                        <TableCell colSpan={6} className="text-center py-8 text-zinc-500">
+                           No activity logs found.
+                        </TableCell>
+                      </TableRow>
+                    )}
+                  </TableBody>
+                </Table>
+              </div>
+            </div>
           </TabsContent>
         </Tabs>
       </main>

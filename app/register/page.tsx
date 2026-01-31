@@ -212,9 +212,10 @@ export default function RegisterPage() {
                     type="text"
                     value={captchaInput}
                     onChange={(e) => setCaptchaInput(e.target.value.toUpperCase())}
-                    className="h-12 flex-1 bg-black/40 border border-[rgba(236,19,19,0.2)] text-white placeholder-slate-600 focus:border-[#ec1313] uppercase tracking-widest font-bold text-lg text-center"
+                    className="h-12 flex-1 bg-black/40 border border-[rgba(236,19,19,0.2)] text-white placeholder-slate-600 focus:border-[#ec1313] uppercase tracking-widest font-bold text-xs text-center"
                     placeholder="ENTER CODE"
                     disabled={loading}
+                    style={{ fontSize: '0.75rem' }} 
                   />
                 </div>
               </div>

@@ -44,7 +44,10 @@ export async function GET(request: Request) {
         response_status,
         response_time_ms,
         metadata,
-        created_at
+        created_at,
+        users (
+          username
+        )
       `, { count: 'exact' });
 
     if (userId) {
