@@ -118,21 +118,19 @@ const categories = [
 // --- Components ---
 
 const FireAvatar = () => (
-  <div className="relative w-10 h-10 flex items-center justify-center bg-black border border-[#ec1313] overflow-hidden group">
+  <div className="relative w-10 h-10 flex items-center justify-center bg-black border border-[#ec1313] group z-50">
     <div className="absolute inset-0 bg-red-600/20 blur-md animate-pulse"></div>
-    {/* Side Fire Effects */}
-    <div className="absolute -left-1 top-0 h-full w-3 bg-[#ec1313] blur-md animate-pulse delay-75 opacity-60"></div>
-    <div className="absolute -right-1 top-0 h-full w-3 bg-[#ec1313] blur-md animate-pulse delay-150 opacity-60"></div>
-    <span className="relative z-10 font-black text-[#ec1313] text-xl font-mono group-hover:scale-110 transition-transform" style={{ textShadow: '0 0 10px #ec1313' }}>
-      P
-    </span>
+    {/* Anime Style Floating Fire */}
+    <div className="absolute -left-6 top-1/2 -translate-y-1/2 h-20 w-8 bg-[#ec1313] blur-xl animate-pulse opacity-60 mix-blend-screen pointer-events-none"></div>
+    <div className="absolute -right-6 top-1/2 -translate-y-1/2 h-20 w-8 bg-[#ec1313] blur-xl animate-pulse delay-100 opacity-60 mix-blend-screen pointer-events-none"></div>
+    <span className="relative z-10 font-black text-[#ec1313] text-xl font-mono drop-shadow-[0_0_8px_rgba(236,19,19,0.8)]">P</span>
   </div>
 );
 
 const ToolPlaceholder = ({ title }: { title: string }) => (
   <div className="flex flex-col h-full animate-in fade-in duration-500">
     <div className="mb-6 border-b border-[#ec1313]/30 pb-4">
-      <h2 className="text-2xl font-black uppercase tracking-tight text-white flex items-center gap-3">
+      <h2 className="text-2xl font-black uppercase tracking-widest text-white flex items-center gap-3">
         <span className="w-2 h-8 bg-[#ec1313]"></span>
         {title}
       </h2>
@@ -274,7 +272,7 @@ export default function DashboardPage() {
       return (
         <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
           <div className="border-b border-[#ec1313]/30 pb-6">
-            <h1 className="text-3xl font-black text-white uppercase tracking-tighter mb-2">
+            <h1 className="text-3xl font-black text-white uppercase tracking-widest mb-2">
               Welcome back, <span className="text-[#ec1313]">{user.username}</span>
             </h1>
             <p className="text-slate-400 font-mono text-xs uppercase tracking-widest">
@@ -327,7 +325,7 @@ export default function DashboardPage() {
 
           {/* Plans Section */}
           <div>
-            <h2 className="text-xl font-bold text-white uppercase tracking-tight mb-6 flex items-center gap-2">
+            <h2 className="text-xl font-bold text-white uppercase tracking-widest mb-6 flex items-center gap-2">
               <Zap className="w-5 h-5 text-[#ec1313]" /> Available Upgrades
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -377,7 +375,7 @@ export default function DashboardPage() {
       return (
         <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
           <div className="border-b border-[#ec1313]/30 pb-6">
-            <h1 className="text-2xl font-black text-white uppercase tracking-tighter mb-2">Account Settings</h1>
+            <h1 className="text-2xl font-black text-white uppercase tracking-widest mb-2">Account Settings</h1>
             <p className="text-slate-400 font-mono text-xs uppercase tracking-widest">
               MANAGE_CREDENTIALS // SECURITY_LEVEL_HIGH
             </p>
@@ -386,7 +384,7 @@ export default function DashboardPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
              {/* Profile Info */}
              <Card className="bg-black/40 border border-[#ec1313]/30 p-8 backdrop-blur-sm h-full">
-                <h2 className="text-xl font-black uppercase tracking-tight text-white mb-6 flex items-center gap-2">
+                <h2 className="text-xl font-black uppercase tracking-widest text-white mb-6 flex items-center gap-2">
                   <User className="w-5 h-5 text-[#ec1313]" /> Profile Identity
                 </h2>
                 
@@ -416,7 +414,7 @@ export default function DashboardPage() {
 
              {/* Change Password */}
              <Card className="bg-black/40 border border-[#ec1313]/30 p-8 backdrop-blur-sm h-full">
-                <h2 className="text-xl font-black uppercase tracking-tight text-white mb-6 flex items-center gap-2">
+                <h2 className="text-xl font-black uppercase tracking-widest text-white mb-6 flex items-center gap-2">
                   <Lock className="w-5 h-5 text-[#ec1313]" /> Update Credentials
                 </h2>
                 
@@ -458,7 +456,7 @@ export default function DashboardPage() {
 
           {/* API Key Section */}
           <Card className="bg-black/40 border border-[#ec1313]/30 p-8 backdrop-blur-sm">
-             <h2 className="text-xl font-black uppercase tracking-tight text-white mb-6 flex items-center gap-2">
+             <h2 className="text-xl font-black uppercase tracking-widest text-white mb-6 flex items-center gap-2">
                <Terminal className="w-5 h-5 text-[#ec1313]" /> API Access
              </h2>
              <div className="space-y-6">
@@ -517,11 +515,11 @@ export default function DashboardPage() {
             <div className="w-8 h-8 flex items-center justify-center border border-[#ec1313] relative bg-black group-hover:bg-[#ec1313] transition-colors duration-300">
               <span className="material-symbols-outlined text-[#ec1313] group-hover:text-black text-xl">star_rate</span>
             </div>
-            <span className="text-xl font-black tracking-tighter text-white uppercase group-hover:text-[#ec1313] transition-colors">
+            <span className="text-xl font-black tracking-tigheerr text-white uppercase group-hover:text-[#ec1313] transition-colors">
               PKA291
             </span>
-          </Link>Sttings
-        </div>
+          </Link>
+        </div>wdeswdes
 
         <div className="flex-1 overflow-y-auto terminal-scroll py-4 px-3 space-y-6">
           {categories.map((cat) => (
@@ -534,7 +532,7 @@ export default function DashboardPage() {
                   <button
                     key={item.id}
                     onClick={() => setActiveTab(item.id)}
-                    className={`w-full flex items-center gap-3 px-3 py-2 rounded text-xs font-bold uppercase tracking-wide transition-all duration-200 ${
+                    className={`w-full flex items-center gap-3 px-3 py-2 rounded text-xs font-bold uppercase tracking-widest transition-all duration-200 ${
                       activeTab === item.id
                         ? 'bg-[#ec1313]/10 text-[#ec1313] border border-[#ec1313]/50 shadow-[0_0_10px_rgba(236,19,19,0.1)]'
                         : 'text-slate-400 hover:text-white hover:bg-white/5 border border-transparent'
@@ -554,8 +552,8 @@ export default function DashboardPage() {
             <div className="flex items-center gap-3">
               <FireAvatar />
               <div className="flex flex-col">
-                <span className="text-xs font-bold text-white uppercase">{user.username}</span>
-                <span className="text-[10px] text-[#ec1313] font-mono">OP_LEVEL_1</span>
+                <span className="text-xs font-bold text-white uppercase tracking-widest">{user.username}</span>
+                <span className="text-[10px] text-[#ec1313] font-mono tracking-widest">OP_LEVEL_1</span>
               </div>
             </div>
             <div className="flex gap-1">
@@ -564,7 +562,7 @@ export default function DashboardPage() {
                 className="p-2 text-slate-500 hover:text-[#ec1313] hover:bg-[#ec1313]/10 rounded transition-colors"
                 title="Settings"
               >
-                <Eye className="w-4 h-4" />
+                <Settings className="w-4 h-4" />
               </button>
               <button 
                 onClick={handleLogout}

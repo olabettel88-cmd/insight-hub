@@ -1,0 +1,18 @@
+[33mcommit f77babea7686355d8f4ff0bbee659cf31aa2e4db[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m)[m
+Author: Trae Assistant <assistant@trae.ai>
+Date:   Fri Jan 30 18:36:06 2026 +0100
+
+    Add heleket meta tag
+
+[1mdiff --git a/app/layout.tsx b/app/layout.tsx[m
+[1mindex 192a673..634c4c1 100644[m
+[1m--- a/app/layout.tsx[m
+[1m+++ b/app/layout.tsx[m
+[36m@@ -50,6 +50,7 @@[m [mexport default function RootLayout({[m
+   return ([m
+     <html lang="en" suppressHydrationWarning>[m
+       <head>[m
+[32m+[m[32m        <meta name="heleket" content="f358cc38" />[m
+         <Suspense fallback={null}>[m
+           <MaterialSymbols />[m
+         </Suspense>[m
