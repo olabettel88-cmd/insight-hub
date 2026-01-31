@@ -134,7 +134,7 @@ const ToolPlaceholder = ({ title }: { title: string }) => (
         <span className="w-2 h-8 bg-[#ec1313]"></span>
         {title}
       </h2>
-      <p className="text-xs text-[#ec1313] mt-1 font-mono uppercase tracking-widest">AWAITING_INPUT // SYSTEM_READY</p>
+      <p className="text-xs text-[#ec1313] mt-1 font-bold uppercase tracking-widest">AWAITING_INPUT // SYSTEM_READY</p>
     </div>
 
     <Card className="flex-1 bg-black/40 border border-[#ec1313]/30 p-8 flex flex-col items-center justify-center text-center backdrop-blur-sm relative overflow-hidden">
@@ -150,7 +150,7 @@ const ToolPlaceholder = ({ title }: { title: string }) => (
         <div className="flex gap-2">
           <Input 
             placeholder={`Enter target for ${title}...`} 
-            className="bg-black/50 border-[#ec1313]/30 text-white placeholder:text-slate-600 font-mono"
+            className="bg-black/50 border-[#ec1313]/30 text-white placeholder:text-slate-600 font-bold tracking-widest"
           />
           <Button className="bg-[#ec1313] hover:bg-[#c41111] text-white font-bold border border-[#ec1313]">
             EXECUTE
@@ -260,7 +260,7 @@ export default function DashboardPage() {
   if (loading) {
     return (
       <div className="min-h-screen bg-black flex items-center justify-center">
-        <div className="text-[#ec1313] font-mono text-sm animate-pulse">INITIALIZING_PKA291...</div>
+        <div className="text-[#ec1313] font-bold tracking-widest text-sm animate-pulse">INITIALIZING_PKA291...</div>
       </div>
     );
   }
@@ -396,7 +396,7 @@ export default function DashboardPage() {
                      <Input 
                         value={user.username} 
                         readOnly 
-                        className="bg-black/50 border-[#ec1313]/20 text-white font-mono uppercase tracking-widest"
+                        className="bg-black/50 border-[#ec1313]/20 text-white font-bold uppercase tracking-widest"
                      />
                    </div>
 
@@ -553,7 +553,7 @@ export default function DashboardPage() {
               <FireAvatar />
               <div className="flex flex-col">
                 <span className="text-xs font-bold text-white uppercase tracking-widest">{user.username}</span>
-                <span className="text-[10px] text-[#ec1313] font-mono tracking-widest">OP_LEVEL_1</span>
+                <span className="text-[10px] text-[#ec1313] font-bold tracking-widest">OP_LEVEL_1</span>
               </div>
             </div>
             <div className="flex gap-1">
