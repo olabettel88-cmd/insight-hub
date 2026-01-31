@@ -233,7 +233,7 @@ export default function DashboardPage() {
               Welcome back, <span className="text-[#ec1313]">{user.username}</span>
             </h1>
             <p className="text-slate-400 font-mono text-xs uppercase tracking-widest">
-              SYSTEM_STATUS: <span className="text-green-500">ONLINE</span> // ENCRYPTION: <span className="text-green-500">ACTIVE</span>
+              SYSTEM_STATUS: <span className="text-green-500">ONLINE</span> // PKA291 <span className="text-[#ec1313]">2026</span>
             </p>
           </div>
 
